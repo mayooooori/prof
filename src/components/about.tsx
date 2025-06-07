@@ -7,19 +7,19 @@ export default function About() {
     <div className='relative flex flex-col justify-end items-center min-h-screen '>
       <div className='relative flex left-52'>
         <div className='w-32 h-32 mx-3 float-animation float-delay-1'>
-          <Image src='/A.svg' alt='H' width={128} height={128} priority />
+          <Image src='/A.svg' alt='A' width={128} height={128} priority />
         </div>
         <div className='w-32 h-32 mx-3 float-animation float-delay-2'>
-          <Image src='/B.svg' alt='E' width={128} height={128} priority />
+          <Image src='/B.svg' alt='B' width={128} height={128} priority />
         </div>
         <div className='w-32 h-32 mx-3 float-animation float-delay-3'>
-          <Image src='/O.svg' alt='L' width={128} height={128} priority />
+          <Image src='/O.svg' alt='O' width={128} height={128} priority />
         </div>
         <div className='w-32 h-32 mx-3 float-animation float-delay-2'>
-          <Image src='/U.svg' alt='L' width={128} height={128} priority />
+          <Image src='/U.svg' alt='U' width={128} height={128} priority />
         </div>
         <div className='w-32 h-32 mx-3 float-animation float-delay-1'>
-          <Image src='/T.svg' alt='O' width={128} height={128} priority />
+          <Image src='/T.svg' alt='T' width={128} height={128} priority />
         </div>
 
         <div className='absolute -top-16 -left-16 w-24 h-24 float-animation float-delay-4'>
