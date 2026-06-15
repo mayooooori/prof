@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Homemade_Apple } from 'next/font/google';
 import './globals.css';
+import StarrySky from '@/components/StarrySky';
 
 const homemadeApple = Homemade_Apple({
   weight: '400',
@@ -20,6 +21,8 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={`${homemadeApple.className} antialiased`}>
+        {/* Global twinkling starfield, fixed behind all content. */}
+        <StarrySky />
         {children}
       </body>
     </html>

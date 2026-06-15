@@ -16,8 +16,10 @@
 
 body {
   color: var(--foreground);
-  /* background: linear-gradient(45deg, #f9f5ff, #f4e1f2); */
-  background: #6d7fab;
+  /* Solid navy fallback; the watercolour texture is painted by the fixed
+     StarrySky layer (a real fixed element scrolls far smoother than
+     background-attachment: fixed). */
+  background: #16223f;
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -77,3 +79,23 @@ body {
 h2 {
   animation: floatText 3s ease-in-out infinite;
 } */
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+.star-twinkle {
+  animation-name: twinkle;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  will-change: opacity, transform;
+  filter: drop-shadow(0 0 3px rgba(240, 176, 62, 0.55));
+}
