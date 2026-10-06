@@ -48,14 +48,14 @@ export default function Home() {
 
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-6 sm:gap-12">
           {/* Works Button */}
-          <button className="flex items-center">
+          <a href="#works" aria-label="Go to works" className="flex items-center">
             <LetterWord word="WORKS" size="nav" evaporate float={false} />
-          </button>
+          </a>
 
           {/* Contact Button */}
-          <button className="flex items-center">
+          <a href="#contact" aria-label="Go to contact" className="flex items-center">
             <LetterWord word="CONTACT" size="nav" evaporate float={false} />
-          </button>
+          </a>
         </div>
 
         <div className="flex justify-center items-center min-h-[80vh]">
@@ -90,7 +90,7 @@ export default function Home() {
 
       {/* Third Section */}
 
-      <div className="relative min-h-screen overflow-hidden">
+      <div id="works" className="relative min-h-screen overflow-hidden scroll-mt-4">
         <div className="relative">
           <Works />
         </div>
@@ -100,7 +100,7 @@ export default function Home() {
       <ThankYou />
 
       {/* Contact Section */}
-      <div className="relative min-h-screen overflow-hidden">
+      <div id="contact" className="relative min-h-screen overflow-hidden scroll-mt-4">
         <div className="relative">
           <Contact />
         </div>

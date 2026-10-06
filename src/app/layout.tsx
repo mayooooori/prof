@@ -19,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en'>
+    <html lang='en' className='scroll-smooth'>
       <body className={`${homemadeApple.className} antialiased`}>
         {/* Global twinkling starfield, fixed behind all content. */}
         <StarrySky />
