@@ -13,7 +13,7 @@ import LetterWord from "@/components/letter-word";
 
 export default function Home() {
   return (
-    <div className="relative">
+    <div id="top" className="relative">
       {/* First Section */}
       <div className="relative min-h-screen overflow-hidden">
         <Popup />
@@ -104,6 +104,19 @@ export default function Home() {
         <div className="relative">
           <Contact />
         </div>
+
+        {/* Back to top */}
+        <a
+          href="#top"
+          aria-label="Back to top"
+          onClick={(e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+          className="absolute bottom-6 right-6 z-20 text-white text-lg sm:text-2xl hover:underline underline-offset-8"
+        >
+          take me outta here ↑
+        </a>
       </div>
     </div>
   );
