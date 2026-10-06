@@ -20,17 +20,17 @@ export default function About() {
           />
         </div>
       </div>
-      <div className='relative w-full px-6 py-12 sm:px-16 lg:px-40 lg:py-0 lg:h-[500px]'>
-        <div className='flex flex-col items-center gap-8 sm:flex-row sm:justify-between sm:gap-x-12 h-full'>
+      <div className='relative w-full px-4 py-12 sm:px-16 lg:px-40 lg:py-0 lg:h-[500px]'>
+        <div className='flex flex-row items-center justify-between gap-x-4 sm:gap-x-12 h-full'>
           <Image
             src='/frog.png'
             alt='Frog'
             width={500}
             height={500}
-            className='w-44 sm:w-56 lg:w-72 h-auto'
+            className='w-32 shrink-0 sm:w-56 lg:w-72 h-auto'
           />
-          <p className='font-handwritten text-white text-xl sm:text-2xl leading-relaxed max-w-md text-center sm:text-left'>
-            Panicking professionally. <br /> Very mindful, very demure. <br />
+          <p className='font-handwritten text-white text-lg sm:text-2xl leading-relaxed max-w-md'>
+            Panicking professionally. <br className='hidden sm:inline' /> Very mindful, very demure.{' '}<br className='hidden sm:inline' />
             But at the end of the day, I&apos;m just a girl 💋
           </p>
         </div>
