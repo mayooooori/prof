@@ -46,7 +46,7 @@ export default function Home() {
           className="absolute bottom-28 left-1/2 w-28 sm:w-40 lg:w-48 h-auto "
         />
 
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-6 sm:gap-12">
+        <div className="absolute bottom-8 left-1/2 z-20 transform -translate-x-1/2 flex gap-6 sm:gap-12">
           {/* Works Button */}
           <a href="#works" aria-label="Go to works" className="flex items-center">
             <LetterWord word="WORKS" size="nav" evaporate float={false} />
