@@ -12,25 +12,25 @@ export default function Contact() {
     <div className='relative flex flex-col items-center min-h-screen gap-16'>
       <div className='relative flex justify-center items-center mt-56'>
         <div className='w-32 h-32 mx-3 float-animation float-delay-1'>
-          <Image src='/C.svg' alt='C' width={128} height={128} priority />
+          <Image src='/C.png' alt='C' width={128} height={128} priority />
         </div>
         <div className='w-32 h-32 mx-3 float-animation float-delay-2'>
-          <Image src='/O.svg' alt='O' width={128} height={128} priority />
+          <Image src='/O.png' alt='O' width={128} height={128} priority />
         </div>
         <div className='w-32 h-32 mx-3 float-animation float-delay-3'>
-          <Image src='/N.svg' alt='N' width={128} height={128} priority />
+          <Image src='/N.png' alt='N' width={128} height={128} priority />
         </div>
         <div className='w-32 h-32 mx-3 float-animation float-delay-2'>
-          <Image src='/T.svg' alt='T' width={128} height={128} priority />
+          <Image src='/T.png' alt='T' width={128} height={128} priority />
         </div>
         <div className='w-32 h-32 mx-3 float-animation float-delay-2'>
-          <Image src='/A.svg' alt='A' width={128} height={128} priority />
+          <Image src='/A.png' alt='A' width={128} height={128} priority />
         </div>
         <div className='w-32 h-32 mx-3 float-animation float-delay-1'>
-          <Image src='/C.svg' alt='C' width={128} height={128} priority />
+          <Image src='/C.png' alt='C' width={128} height={128} priority />
         </div>
         <div className='w-32 h-32 mx-3 float-animation float-delay-2'>
-          <Image src='/T.svg' alt='T' width={128} height={128} priority />
+          <Image src='/T.png' alt='T' width={128} height={128} priority />
         </div>
       </div>
       <div className='flex flex-col items-center mt-10'>

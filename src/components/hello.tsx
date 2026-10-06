@@ -10,7 +10,7 @@ export default function Hello() {
       <div className='relative flex'>
         <div className='w-32 h-32 mx-3 float-animation float-delay-1'>
           <EvaporateImage
-            src='/H.svg'
+            src='/H.png'
             alt='H'
             width={128}
             height={128}
@@ -19,7 +19,7 @@ export default function Hello() {
         </div>
         <div className='w-32 h-32 mx-3 float-animation float-delay-2'>
           <EvaporateImage
-            src='/E.svg'
+            src='/E.png'
             alt='E'
             width={128}
             height={128}
@@ -28,7 +28,7 @@ export default function Hello() {
         </div>
         <div className='w-32 h-32 mx-3 float-animation float-delay-3'>
           <EvaporateImage
-            src='/L.svg'
+            src='/L.png'
             alt='L'
             width={128}
             height={128}
@@ -37,7 +37,7 @@ export default function Hello() {
         </div>
         <div className='w-32 h-32 mx-3 float-animation float-delay-2'>
           <EvaporateImage
-            src='/L.svg'
+            src='/L.png'
             alt='L'
             width={128}
             height={128}
@@ -46,7 +46,7 @@ export default function Hello() {
         </div>
         <div className='w-32 h-32 mx-3 float-animation float-delay-1'>
           <EvaporateImage
-            src='/O.svg'
+            src='/O.png'
             alt='O'
             width={128}
             height={128}

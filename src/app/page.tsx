@@ -48,22 +48,22 @@ export default function Home() {
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-12">
           {/* Works Button */}
           <button className="flex items-center">
-            <EvaporateImage src="/W.svg" alt="W" width={32} height={32} />
-            <EvaporateImage src="/O.svg" alt="O" width={32} height={32} />
-            <EvaporateImage src="/R.svg" alt="R" width={32} height={32} />
-            <EvaporateImage src="/K.svg" alt="K" width={32} height={32} />
-            <EvaporateImage src="/S.svg" alt="S" width={32} height={32} />
+            <EvaporateImage src="/W.png" alt="W" width={32} height={32} />
+            <EvaporateImage src="/O.png" alt="O" width={32} height={32} />
+            <EvaporateImage src="/R.png" alt="R" width={32} height={32} />
+            <EvaporateImage src="/K.png" alt="K" width={32} height={32} />
+            <EvaporateImage src="/S.png" alt="S" width={32} height={32} />
           </button>
 
           {/* Contact Button */}
           <button className="flex items-center">
-            <EvaporateImage src="/C.svg" alt="C" width={32} height={32} />
-            <EvaporateImage src="/O.svg" alt="O" width={32} height={32} />
-            <EvaporateImage src="/N.svg" alt="N" width={32} height={32} />
-            <EvaporateImage src="/T.svg" alt="T" width={32} height={32} />
-            <EvaporateImage src="/A.svg" alt="A" width={32} height={32} />
-            <EvaporateImage src="/C.svg" alt="C" width={32} height={32} />
-            <EvaporateImage src="/T.svg" alt="T" width={32} height={32} />
+            <EvaporateImage src="/C.png" alt="C" width={32} height={32} />
+            <EvaporateImage src="/O.png" alt="O" width={32} height={32} />
+            <EvaporateImage src="/N.png" alt="N" width={32} height={32} />
+            <EvaporateImage src="/T.png" alt="T" width={32} height={32} />
+            <EvaporateImage src="/A.png" alt="A" width={32} height={32} />
+            <EvaporateImage src="/C.png" alt="C" width={32} height={32} />
+            <EvaporateImage src="/T.png" alt="T" width={32} height={32} />
           </button>
         </div>
 

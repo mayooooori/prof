@@ -67,7 +67,7 @@ export default function ThankYou() {
               }`}
             >
               <Image
-                src={`/${letter}.svg`}
+                src={`/${letter}.png`}
                 alt={letter}
                 width={96}
                 height={96}

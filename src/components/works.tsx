@@ -7,19 +7,19 @@ export default function Works() {
     <div className='relative flex flex-col items-center min-h-screen '>
       <div className='relative flex right-52 my-16'>
         <div className='w-32 h-32 mx-3 float-animation float-delay-1'>
-          <Image src='/W.svg' alt='W' width={128} height={128} priority />
+          <Image src='/W.png' alt='W' width={128} height={128} priority />
         </div>
         <div className='w-32 h-32 mx-3 float-animation float-delay-2'>
-          <Image src='/O.svg' alt='O' width={128} height={128} priority />
+          <Image src='/O.png' alt='O' width={128} height={128} priority />
         </div>
         <div className='w-32 h-32 mx-3 float-animation float-delay-3'>
-          <Image src='/R.svg' alt='R' width={128} height={128} priority />
+          <Image src='/R.png' alt='R' width={128} height={128} priority />
         </div>
         <div className='w-32 h-32 mx-3 float-animation float-delay-2'>
-          <Image src='/K.svg' alt='K' width={128} height={128} priority />
+          <Image src='/K.png' alt='K' width={128} height={128} priority />
         </div>
         <div className='w-32 h-32 mx-3 float-animation float-delay-1'>
-          <Image src='/S.svg' alt='S' width={128} height={128} priority />
+          <Image src='/S.png' alt='S' width={128} height={128} priority />
         </div>
 
         <div className='absolute -top-16 -left-16 w-24 h-24 float-animation float-delay-4'>
