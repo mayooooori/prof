@@ -1,67 +1,23 @@
 'use client';
 
-// import Image from 'next/image';
 import EvaporateImage from './evaporate';
+import LetterWord from './letter-word';
 
 export default function Hello() {
   return (
     <div className='relative flex justify-center items-center min-h-screen h-1/2'>
       {/* Word "HELLO" */}
       <div className='relative flex'>
-        <div className='w-32 h-32 mx-3 float-animation float-delay-1'>
-          <EvaporateImage
-            src='/H.png'
-            alt='H'
-            width={128}
-            height={128}
-            // priority
-          />
-        </div>
-        <div className='w-32 h-32 mx-3 float-animation float-delay-2'>
-          <EvaporateImage
-            src='/E.png'
-            alt='E'
-            width={128}
-            height={128}
-            // priority
-          />
-        </div>
-        <div className='w-32 h-32 mx-3 float-animation float-delay-3'>
-          <EvaporateImage
-            src='/L.png'
-            alt='L'
-            width={128}
-            height={128}
-            // priority
-          />
-        </div>
-        <div className='w-32 h-32 mx-3 float-animation float-delay-2'>
-          <EvaporateImage
-            src='/L.png'
-            alt='L'
-            width={128}
-            height={128}
-            // priority
-          />
-        </div>
-        <div className='w-32 h-32 mx-3 float-animation float-delay-1'>
-          <EvaporateImage
-            src='/O.png'
-            alt='O'
-            width={128}
-            height={128}
-            // priority
-          />
-        </div>
+        <LetterWord word='HELLO' evaporate priority={false} />
 
         {/* Star SVG in Top-Right Corner */}
-        <div className='absolute -top-16 -right-16 w-24 h-24 float-animation float-delay-4'>
+        <div className='absolute -top-10 -right-6 w-14 h-14 sm:-top-16 sm:-right-16 sm:w-24 sm:h-24 float-animation float-delay-4'>
           <EvaporateImage
             src='/star.svg'
             alt='Star'
             width={96}
             height={96}
-            // priority
+            className='w-full h-auto'
           />
         </div>
       </div>

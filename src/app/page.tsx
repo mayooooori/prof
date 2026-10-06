@@ -9,6 +9,7 @@ import ThankYou from "@/components/thankyou";
 import Works from "@/components/works";
 import ZoomFadeImage from "@/components/zoomFade";
 import Image from "next/image";
+import LetterWord from "@/components/letter-word";
 
 export default function Home() {
   return (
@@ -21,49 +22,39 @@ export default function Home() {
           alt="Sun"
           width={500}
           height={400}
-          className="absolute top-0 right-0"
+          className="absolute top-0 right-0 w-48 sm:w-72 lg:w-[500px] h-auto"
         />
         <EvaporateImage
           src="/discoball.png"
           alt="Disco Ball"
           width={300}
           height={300}
-          className="absolute top-0 left-0 z-10"
+          className="absolute top-0 left-0 z-10 w-32 sm:w-48 lg:w-[300px] h-auto"
         />
         <EvaporateImage
           src="/clouds.png"
           alt="Clouds"
           width={400}
           height={400}
-          className="absolute top-0 left-10 z-0"
+          className="absolute top-0 left-4 sm:left-10 z-0 w-48 sm:w-72 lg:w-[400px] h-auto"
         />
         <ZoomFadeImage
           src="/shrek.png"
           alt="Shrek"
           width={200}
           height={200}
-          className="absolute bottom-24 left-1/2 w-48 h-auto "
+          className="absolute bottom-28 left-1/2 w-28 sm:w-40 lg:w-48 h-auto "
         />
 
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-12">
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-6 sm:gap-12">
           {/* Works Button */}
           <button className="flex items-center">
-            <EvaporateImage src="/W.png" alt="W" width={32} height={32} />
-            <EvaporateImage src="/O.png" alt="O" width={32} height={32} />
-            <EvaporateImage src="/R.png" alt="R" width={32} height={32} />
-            <EvaporateImage src="/K.png" alt="K" width={32} height={32} />
-            <EvaporateImage src="/S.png" alt="S" width={32} height={32} />
+            <LetterWord word="WORKS" size="nav" evaporate float={false} />
           </button>
 
           {/* Contact Button */}
           <button className="flex items-center">
-            <EvaporateImage src="/C.png" alt="C" width={32} height={32} />
-            <EvaporateImage src="/O.png" alt="O" width={32} height={32} />
-            <EvaporateImage src="/N.png" alt="N" width={32} height={32} />
-            <EvaporateImage src="/T.png" alt="T" width={32} height={32} />
-            <EvaporateImage src="/A.png" alt="A" width={32} height={32} />
-            <EvaporateImage src="/C.png" alt="C" width={32} height={32} />
-            <EvaporateImage src="/T.png" alt="T" width={32} height={32} />
+            <LetterWord word="CONTACT" size="nav" evaporate float={false} />
           </button>
         </div>
 
@@ -82,7 +73,7 @@ export default function Home() {
           alt="Lips"
           width={250}
           height={250}
-          className="absolute top-10 left-40 transform -translate-x-1/2 w-60 h-auto rotate-12"
+          className="absolute top-10 left-24 w-36 sm:left-40 sm:w-60 transform -translate-x-1/2 h-auto rotate-12"
         />
 
         <div className="relative">
@@ -91,7 +82,7 @@ export default function Home() {
             alt="Butterfly"
             width={80}
             height={80}
-            className="absolute top-32 right-48 transform -translate-x-1/2 w-60 h-auto rotate-12 float-animation float-delay-4"
+            className="absolute top-32 right-4 w-32 sm:right-48 sm:w-60 transform -translate-x-1/2 h-auto rotate-12 float-animation float-delay-4"
           />
           <About />
         </div>

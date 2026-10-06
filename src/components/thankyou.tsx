@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import LetterWord from './letter-word';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 
@@ -45,7 +46,7 @@ export default function ThankYou() {
               width={422}
               height={591}
               priority
-              className='h-[80vh] w-auto'
+              className='w-[min(80vw,422px)] h-auto sm:w-auto sm:h-[80vh]'
             />
           </div>
         </motion.div>
@@ -59,22 +60,11 @@ export default function ThankYou() {
           }}
           className='relative flex justify-center items-center'
         >
-          {letters.map((letter, i) => (
-            <div
-              key={`${letter}-${i}`}
-              className={`w-24 h-24 mx-2 float-animation float-delay-${
-                (i % 4) + 1
-              }`}
-            >
-              <Image
-                src={`/${letter}.png`}
-                alt={letter}
-                width={96}
-                height={96}
-                priority
-              />
-            </div>
-          ))}
+          <LetterWord
+            word={letters.join('')}
+            size='thanks'
+            delays={letters.map((_, i) => (i % 4) + 1)}
+          />
         </motion.div>
       </div>
     </section>
