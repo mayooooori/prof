@@ -21,7 +21,7 @@ export default function About() {
         </div>
       </div>
       <div className='relative w-full px-4 py-12 sm:px-16 lg:px-40 lg:py-0 lg:h-[500px]'>
-        <div className='flex flex-row items-center justify-between gap-x-4 sm:gap-x-12 h-full'>
+        <div className='flex flex-row items-start sm:items-center justify-between gap-x-4 sm:gap-x-12 h-full'>
           <Image
             src='/frog.png'
             alt='Frog'
@@ -29,7 +29,7 @@ export default function About() {
             height={500}
             className='w-32 shrink-0 sm:w-56 lg:w-72 h-auto'
           />
-          <p className='font-handwritten text-white text-lg sm:text-2xl leading-relaxed max-w-md'>
+          <p className='font-handwritten text-white text-lg sm:text-2xl leading-relaxed max-w-md mt-32 sm:mt-0'>
             Panicking professionally. <br className='hidden sm:inline' /> Very mindful, very demure.{' '}<br className='hidden sm:inline' />
             But at the end of the day, I&apos;m just a girl 💋
           </p>
