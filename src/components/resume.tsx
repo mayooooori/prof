@@ -83,15 +83,6 @@ export default function Resume() {
         </div>
 
         <div>
-          <Heading>selected projects</Heading>
-          <div className='flex flex-col gap-8'>
-            {resume.projects.map((e) => (
-              <EntryCard key={e.org} entry={e} tilt={tilt++} />
-            ))}
-          </div>
-        </div>
-
-        <div>
           <Heading>skills</Heading>
           <Paper tilt={tilt++}>
             <div className='flex flex-col gap-4 text-sm sm:text-[15px] leading-relaxed'>
@@ -101,21 +92,6 @@ export default function Resume() {
                 </p>
               ))}
             </div>
-          </Paper>
-        </div>
-
-        <div>
-          <Heading>education</Heading>
-          <Paper tilt={tilt++}>
-            <div className='flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-x-4'>
-              <p className='font-bold text-base sm:text-lg'>{resume.education.school}</p>
-              <p className='text-sm shrink-0'>{resume.education.location}</p>
-            </div>
-            <div className='flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-x-4 mt-1'>
-              <p className='text-sm sm:text-base'>{resume.education.degree}</p>
-              <p className='italic text-sm shrink-0'>{resume.education.dates}</p>
-            </div>
-            <p className='mt-3 text-sm sm:text-[15px] leading-relaxed'>{resume.education.publication}</p>
           </Paper>
         </div>
       </div>

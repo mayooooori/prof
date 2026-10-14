@@ -79,26 +79,6 @@ export const resume = {
     },
   ] satisfies Entry[],
 
-  projects: [
-    {
-      org: 'offlyn.love',
-      orgUrl: 'https://offlyn.love',
-      role: 'Co-Founder, Product & Strategy',
-      bullets: [
-        'Co-built and launched a consumer dating product in Bengaluru as a two-person team, taking it from an initial waitlist with no backend to a public product launch.',
-        'Owned product requirements, user flows, roadmap, go-to-market planning, and trust and safety considerations; defined activation, retention, and referral metrics.',
-      ],
-    },
-    {
-      org: 'Wave',
-      role: 'Enterprise Product Strategy & Packaging',
-      bullets: [
-        'Developing an enterprise offering for an open-source AI-agent collaboration product, defining organization tiers, admin roles, pricing, access controls, and audit requirements.',
-        'Structured the roadmap into three delivery milestones and prioritized requirements using MoSCoW.',
-      ],
-    },
-  ] satisfies Entry[],
-
   skills: [
     {
       label: 'Product',
@@ -109,12 +89,4 @@ export const resume = {
       text: 'SQL, PostgreSQL, data modeling, TypeScript, React, Next.js, Python, Supabase, APIs, web and iOS development, AI and LLM product concepts',
     },
   ],
-
-  education: {
-    school: "St. Joseph's College of Engineering",
-    location: 'Chennai, India',
-    degree: 'B.E. Computer Science, GPA: 8.9/10',
-    publication: 'Publication: Ensemble Stacking Methodology for Identifying Heart Disease, ICOSEC 2023',
-    dates: '2020 – 2024',
-  },
 };
