@@ -44,27 +44,45 @@ export function Paper({
 }
 
 const bowClass =
-  'pointer-events-none absolute w-14 sm:w-24 h-auto drop-shadow-[0_4px_6px_rgba(0,0,0,0.35)]';
+  'pointer-events-none absolute h-auto drop-shadow-[0_4px_6px_rgba(0,0,0,0.35)]';
+
+// Padding and bow placement. `roomy` suits a card with the page to itself;
+// `snug` suits a narrow column (beside the frog in About): tighter padding
+// and smaller bows until the column widens at `lg`.
+const sizes = {
+  roomy: {
+    pad: '!px-9 !py-10 sm:!px-14 sm:!py-12',
+    topLeft: 'w-14 sm:w-24 -top-7 -left-7 sm:-top-10 sm:-left-10',
+    bottomRight: 'w-14 sm:w-24 -bottom-7 -right-7 sm:-bottom-10 sm:-right-10',
+  },
+  snug: {
+    pad: '!px-5 !py-8 sm:!px-7 sm:!py-9 lg:!px-14 lg:!py-10',
+    topLeft: 'w-10 sm:w-14 lg:w-24 -top-5 -left-5 sm:-top-7 sm:-left-7 lg:-top-10 lg:-left-10',
+    bottomRight: 'w-10 sm:w-14 lg:w-24 -bottom-5 -right-1 sm:-bottom-7 sm:-right-5 lg:-bottom-10 lg:-right-10',
+  },
+};
 
 /** A paper card with a chrome bow tied on the top-left and bottom-right
- *  corners. Extra padding keeps the bows clear of the text; keep the card
- *  narrower than the screen on phones so the bows stay on screen. */
+ *  corners. Padding keeps the bows clear of the text. */
 export function BowCard({
   children,
   className = '',
+  size = 'roomy',
 }: {
   children: React.ReactNode;
   className?: string;
+  size?: keyof typeof sizes;
 }) {
+  const z = sizes[size];
   return (
-    <Paper className={`${className} !px-9 !py-10 sm:!px-14 sm:!py-12`} tape={0}>
+    <Paper className={`${className} ${z.pad}`} tape={0}>
       <Image
         src='/bow.png'
         alt=''
         aria-hidden
         width={499}
         height={499}
-        className={`${bowClass} -top-7 -left-7 sm:-top-10 sm:-left-10 -rotate-[18deg]`}
+        className={`${bowClass} ${z.topLeft} -rotate-[18deg]`}
       />
       {children}
       <Image
@@ -73,7 +91,7 @@ export function BowCard({
         aria-hidden
         width={499}
         height={499}
-        className={`${bowClass} -bottom-7 -right-7 sm:-bottom-10 sm:-right-10 rotate-[18deg]`}
+        className={`${bowClass} ${z.bottomRight} rotate-[18deg]`}
       />
     </Paper>
   );
