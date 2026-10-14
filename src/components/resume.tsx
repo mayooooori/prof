@@ -66,7 +66,7 @@ function EntryCard({ entry, tilt }: { entry: Entry; tilt: number }) {
 export default function Resume() {
   let tilt = 0;
   return (
-    <section aria-label='Resume' className='relative px-4 sm:px-6 pt-8 pb-24'>
+    <section aria-label='Resume' className='relative px-4 sm:px-6 pt-8 pb-8'>
       <div className='mx-auto max-w-3xl flex flex-col gap-14 sm:gap-16'>
         {/* Summary */}
         <Paper tilt={tilt++}>

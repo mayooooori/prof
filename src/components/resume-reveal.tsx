@@ -20,22 +20,29 @@ export default function ResumeReveal() {
   const GAP_X = '32%';
   const GAP_Y = '41%';
 
+  // The section is 254vh tall: 120vh of scroll plays the zoom, and the last
+  // 34vh lets the resume content rise in under the pinned RESUME heading
+  // (the content is pulled up by the same 34vh in page.tsx). `at` maps the
+  // animation's 0..1 timeline onto the first 120vh.
+  const ANIM = 120 / 154;
+  const at = (p: number) => p * ANIM;
+
   // Pearl lady: sits still, then zooms into the torn gap and fades away.
-  const pearlScale = useTransform(scrollYProgress, [0, 0.65], [1, 16]);
-  const pearlOpacity = useTransform(scrollYProgress, [0, 0.4, 0.62], [1, 1, 0]);
+  const pearlScale = useTransform(scrollYProgress, [at(0), at(0.65)], [1, 16]);
+  const pearlOpacity = useTransform(scrollYProgress, [at(0), at(0.4), at(0.62)], [1, 1, 0]);
 
   // Resume: hidden while the pearl lady sits still. Once the zoom is under
   // way and the hole has opened up, it fades in behind her, centred on the
   // gap, as a glimpse of what's coming. As she fades it grows and glides to
   // the middle of the screen; the subtitle only arrives at the end.
-  const resumeScale = useTransform(scrollYProgress, [0, 0.15, 0.85], [0.35, 0.35, 1]);
-  const resumeOpacity = useTransform(scrollYProgress, [0.1, 0.25, 0.5, 0.68], [0, 0.9, 0.9, 1]);
-  const subtitleOpacity = useTransform(scrollYProgress, [0.62, 0.78], [0, 1]);
-  const resumeLeft = useTransform(scrollYProgress, [0.4, 0.75], [GAP_X, '50%']);
-  const resumeTop = useTransform(scrollYProgress, [0.4, 0.75], [GAP_Y, '50%']);
+  const resumeScale = useTransform(scrollYProgress, [at(0), at(0.15), at(0.85)], [0.35, 0.35, 1]);
+  const resumeOpacity = useTransform(scrollYProgress, [at(0.1), at(0.25), at(0.5), at(0.68)], [0, 0.9, 0.9, 1]);
+  const subtitleOpacity = useTransform(scrollYProgress, [at(0.62), at(0.78)], [0, 1]);
+  const resumeLeft = useTransform(scrollYProgress, [at(0.4), at(0.75)], [GAP_X, '50%']);
+  const resumeTop = useTransform(scrollYProgress, [at(0.4), at(0.75)], [GAP_Y, '50%']);
 
   return (
-    <section id='resume' ref={ref} className='relative h-[220vh]'>
+    <section id='resume' ref={ref} className='relative h-[254vh]'>
       {/* Pinned viewport: the animation plays while this section scrolls past. */}
       <div className='sticky top-0 h-screen overflow-hidden flex items-center justify-center'>
         {/* Pearl lady — zoom origin sits on the centre of the torn gap. */}

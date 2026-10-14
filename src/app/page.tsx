@@ -100,11 +100,14 @@ export default function Home() {
       {/* Resume reveal: zooms through the pearl girl into the resume (manages its own scroll height + sticky pin) */}
       <ResumeReveal />
 
-      {/* Resume content */}
-      <Resume />
+      {/* Resume content: pulled up 34vh so it scrolls in just under the
+          pinned RESUME heading (see ResumeReveal). */}
+      <div className="relative z-20 -mt-[34vh]">
+        <Resume />
+      </div>
 
       {/* Thanks Section */}
-      <div className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
+      <div className="relative flex items-center justify-center overflow-hidden py-16 sm:py-24">
         <LetterWord word="THANKS" size="thanks" delays={[1, 2, 3, 4, 1, 2]} />
       </div>
 
