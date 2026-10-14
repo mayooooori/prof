@@ -1,4 +1,5 @@
 // Resume content, transcribed from mayuri_pm_resume_ats.pdf.
+// SpindL sits under IntelXLabs as Product Engineer I (per Mayuri, 2026-10-14).
 // The phone number is left out on purpose: this site is public.
 
 export type Entry = {
@@ -40,9 +41,9 @@ export const resume = {
       ],
     },
     {
-      org: 'SpindL',
-      product: 'Private-Market Investment Platform',
-      role: 'Product Manager (independent engagement)',
+      org: 'IntelXLabs',
+      product: 'SpindL, Private-Market Investment Platform',
+      role: 'Product Engineer I',
       location: 'Bangalore, India',
       dates: 'Mar 2026 – May 2026',
       bullets: [

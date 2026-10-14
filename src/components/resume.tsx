@@ -93,7 +93,7 @@ export default function Resume() {
           <Heading>experience</Heading>
           <div className='flex flex-col gap-8'>
             {resume.experience.map((e) => (
-              <EntryCard key={`${e.org}-${e.role}`} entry={e} tilt={tilt++} />
+              <EntryCard key={`${e.org}-${e.product ?? ""}-${e.role}`} entry={e} tilt={tilt++} />
             ))}
           </div>
         </div>
