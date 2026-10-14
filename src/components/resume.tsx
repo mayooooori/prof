@@ -5,35 +5,73 @@ import { resume, type Entry } from '@/content/resume';
 // long bullets where the handwriting font would not.
 const typewriter = Courier_Prime({ weight: ['400', '700'], subsets: ['latin'] });
 
-const tilts = ['-rotate-[0.6deg]', 'rotate-[0.5deg]', '-rotate-[0.3deg]', 'rotate-[0.7deg]'];
+// Collage placement for each experience card. On phones the cards keep a
+// small zigzag and tilt so the text stays easy to read; from `lg` up they are
+// narrower, scattered left and right, tilted more, and tuck slightly under
+// each other at the corners.
+const scatter = [
+  'self-start -rotate-[0.8deg] lg:w-[60%] lg:ml-[2%] lg:-rotate-[2deg]',
+  'self-end rotate-[0.8deg] lg:w-[60%] lg:mr-[3%] lg:rotate-[1.6deg] lg:-mt-3',
+  'self-start -rotate-[0.5deg] lg:w-[58%] lg:ml-[15%] lg:-rotate-[1.2deg] lg:-mt-3',
+  'self-end rotate-[0.6deg] lg:w-[60%] lg:mr-[9%] lg:rotate-[2.2deg] lg:-mt-3',
+];
+
+// Tape strips, slightly different on every card.
+const tapes = [
+  'left-1/2 -translate-x-1/2 -rotate-3',
+  'left-10 rotate-6',
+  'right-12 -rotate-6',
+  'left-1/3 rotate-2',
+];
 
 function Paper({
   children,
-  tilt = 0,
+  className = '',
+  tape = 0,
 }: {
   children: React.ReactNode;
-  tilt?: number;
+  className?: string;
+  tape?: number;
 }) {
   return (
     <div
-      className={`${typewriter.className} ${tilts[tilt % tilts.length]} bg-[#f4ecdc] text-[#1f1b16] rounded-sm shadow-[0_6px_20px_rgba(0,0,0,0.35)] px-5 py-6 sm:px-8 sm:py-7`}
+      className={`${typewriter.className} ${className} relative bg-[#f4ecdc] text-[#1f1b16] rounded-sm shadow-[0_8px_24px_rgba(0,0,0,0.4)] px-5 py-6 sm:px-8 sm:py-7`}
     >
+      {/* Tape */}
+      <span
+        aria-hidden
+        className={`absolute -top-3 ${tapes[tape % tapes.length]} w-20 sm:w-24 h-6 bg-[#e9dcb8]/75 shadow-sm`}
+      />
       {children}
     </div>
   );
 }
 
-function Heading({ children }: { children: React.ReactNode }) {
+function Heading({
+  children,
+  className = '',
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
   return (
-    <h3 className='text-white text-2xl sm:text-3xl mb-5 sm:mb-6'>
+    <h3 className={`text-white text-2xl sm:text-3xl mb-6 sm:mb-8 ${className}`}>
       {children} <span aria-hidden>✦</span>
     </h3>
   );
 }
 
-function EntryCard({ entry, tilt }: { entry: Entry; tilt: number }) {
+function EntryCard({
+  entry,
+  className,
+  tape,
+}: {
+  entry: Entry;
+  className: string;
+  tape: number;
+}) {
   return (
-    <Paper tilt={tilt}>
+    <Paper className={`w-[95%] ${className}`} tape={tape}>
       <div className='flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-x-4'>
         <p className='font-bold text-base sm:text-lg'>
           {entry.orgUrl ? (
@@ -64,27 +102,31 @@ function EntryCard({ entry, tilt }: { entry: Entry; tilt: number }) {
 }
 
 export default function Resume() {
-  let tilt = 0;
   return (
     <section aria-label='Resume' className='relative px-4 sm:px-6 pt-8 pb-8'>
-      <div className='mx-auto max-w-3xl flex flex-col gap-14 sm:gap-16'>
+      <div className='mx-auto max-w-3xl lg:max-w-6xl flex flex-col gap-14 sm:gap-16'>
         {/* Summary */}
-        <Paper tilt={tilt++}>
+        <Paper className='self-center w-full lg:w-[68%] -rotate-[0.6deg] lg:-rotate-[1deg]' tape={0}>
           <p className='text-sm sm:text-[15px] leading-relaxed'>{resume.summary}</p>
         </Paper>
 
-        <div>
-          <Heading>experience</Heading>
-          <div className='flex flex-col gap-8'>
-            {resume.experience.map((e) => (
-              <EntryCard key={`${e.org}-${e.product ?? ""}-${e.role}`} entry={e} tilt={tilt++} />
+        <div className='flex flex-col'>
+          <Heading className='self-start lg:ml-[6%] -rotate-2'>experience</Heading>
+          <div className='flex flex-col gap-8 lg:gap-0'>
+            {resume.experience.map((e, i) => (
+              <EntryCard
+                key={`${e.org}-${e.product ?? ''}-${e.role}`}
+                entry={e}
+                className={scatter[i % scatter.length]}
+                tape={i + 1}
+              />
             ))}
           </div>
         </div>
 
-        <div>
-          <Heading>skills</Heading>
-          <Paper tilt={tilt++}>
+        <div className='flex flex-col'>
+          <Heading className='self-end lg:mr-[20%] rotate-2'>skills</Heading>
+          <Paper className='self-end w-[95%] lg:w-[64%] lg:mr-[5%] rotate-[0.6deg] lg:rotate-[1.4deg]' tape={2}>
             <div className='flex flex-col gap-4 text-sm sm:text-[15px] leading-relaxed'>
               {resume.skills.map((s) => (
                 <p key={s.label}>
