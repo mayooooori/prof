@@ -50,9 +50,16 @@ export function ProductLogo({ logo, href }: { logo: Logo; href?: string }) {
       target='_blank'
       rel='noopener noreferrer'
       aria-label={`${logo.alt} website`}
-      className='inline-flex hover:opacity-80 hover:-translate-y-0.5 transition'
+      className='group inline-flex items-start gap-1 hover:-translate-y-0.5 transition'
     >
       <LogoImage logo={logo} />
+      {/* Arrow so it's clear the logo is a link. */}
+      <span
+        aria-hidden
+        className='flex items-center justify-center w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#1f1b16] text-white text-xs sm:text-sm leading-none group-hover:scale-110 transition'
+      >
+        ↗
+      </span>
     </a>
   );
 }
