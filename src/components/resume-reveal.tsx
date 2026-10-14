@@ -18,17 +18,19 @@ export default function ResumeReveal() {
   // Where the torn gap sits inside the pearl-lady box (measured from the
   // image's transparent hole, including the 7% downward nudge below).
   const GAP_X = '32%';
-  const GAP_Y = '47%';
+  const GAP_Y = '41%';
 
   // Pearl lady: sits still, then zooms into the torn gap and fades away.
   const pearlScale = useTransform(scrollYProgress, [0, 0.65], [1, 16]);
   const pearlOpacity = useTransform(scrollYProgress, [0, 0.4, 0.62], [1, 1, 0]);
 
-  // Resume: sits small behind the pearl lady, centred on the gap, so only a
-  // glimpse shows through the hole. As the pearl lady fades it grows and
-  // glides to the middle of the screen.
-  const resumeScale = useTransform(scrollYProgress, [0, 0.3, 0.85], [0.2, 0.2, 1]);
-  const resumeOpacity = useTransform(scrollYProgress, [0, 0.5, 0.68], [0.9, 0.9, 1]);
+  // Resume: hidden while the pearl lady sits still. Once the zoom is under
+  // way and the hole has opened up, it fades in behind her, centred on the
+  // gap, as a glimpse of what's coming. As she fades it grows and glides to
+  // the middle of the screen; the subtitle only arrives at the end.
+  const resumeScale = useTransform(scrollYProgress, [0, 0.15, 0.85], [0.35, 0.35, 1]);
+  const resumeOpacity = useTransform(scrollYProgress, [0.1, 0.25, 0.5, 0.68], [0, 0.9, 0.9, 1]);
+  const subtitleOpacity = useTransform(scrollYProgress, [0.62, 0.78], [0, 1]);
   const resumeLeft = useTransform(scrollYProgress, [0.4, 0.75], [GAP_X, '50%']);
   const resumeTop = useTransform(scrollYProgress, [0.4, 0.75], [GAP_Y, '50%']);
 
@@ -75,9 +77,12 @@ export default function ResumeReveal() {
             className='absolute w-max flex flex-col items-center text-white'
           >
             <LetterWord word='RESUME' size='thanks' />
-            <p className='mt-10 sm:mt-16 text-lg sm:text-2xl text-center max-w-[80vw] sm:max-w-md'>
+            <motion.p
+              style={{ opacity: subtitleOpacity }}
+              className='mt-10 sm:mt-16 text-lg sm:text-2xl text-center max-w-[80vw] sm:max-w-md'
+            >
               the serious stuff is on its way.
-            </p>
+            </motion.p>
           </motion.div>
         </div>
       </div>
