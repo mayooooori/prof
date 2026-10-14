@@ -24,8 +24,9 @@ const Popup: React.FC = () => {
         }}
       >
         <div className='flex items-center justify-center w-full h-full'>
+          {/* Animated WebP keeps the GIF's transparency at a tenth of its size. */}
           <Image
-            src='/cat.gif'
+            src='/cat.webp'
             alt='Welcome!'
             width={200}
             height={200}

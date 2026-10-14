@@ -20,21 +20,21 @@ export default function Home() {
       <div className="relative min-h-screen overflow-hidden">
         <Popup />
         <EvaporateImage
-          src="/sun.svg"
+          src="/sun.webp"
           alt="Sun"
           width={500}
           height={400}
           className="absolute top-0 right-0 w-48 sm:w-72 lg:w-[500px] h-auto"
         />
         <EvaporateImage
-          src="/discoball.png"
+          src="/discoball.webp"
           alt="Disco Ball"
           width={300}
           height={300}
           className="absolute top-0 left-0 z-10 w-32 sm:w-48 lg:w-[300px] h-auto"
         />
         <EvaporateImage
-          src="/clouds.png"
+          src="/clouds.webp"
           alt="Clouds"
           width={400}
           height={400}
@@ -76,7 +76,7 @@ export default function Home() {
 
       <div className="relative min-h-screen overflow-hidden">
         <Image
-          src="/lips.svg"
+          src="/lips.webp"
           alt="Lips"
           width={250}
           height={250}

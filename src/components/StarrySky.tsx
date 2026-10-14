@@ -59,7 +59,7 @@ export default function StarrySky() {
       className='fixed inset-0 overflow-hidden pointer-events-none'
       style={{
         zIndex: -1,
-        backgroundImage: "url('/night-texture.png')",
+        backgroundImage: "url('/night-texture.webp')",
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}

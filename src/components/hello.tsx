@@ -13,7 +13,7 @@ export default function Hello() {
         {/* Star SVG in Top-Right Corner */}
         <div className='absolute -top-10 -right-6 w-14 h-14 sm:-top-16 sm:-right-16 sm:w-24 sm:h-24 float-animation float-delay-4'>
           <EvaporateImage
-            src='/star.svg'
+            src='/star.webp'
             alt='Star'
             width={96}
             height={96}

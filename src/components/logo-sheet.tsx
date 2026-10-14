@@ -48,7 +48,7 @@ function useLogoTexture(logo: Logo) {
       if (cancelled) return;
       const w0 = img.naturalWidth || logo.width;
       const h0 = img.naturalHeight || logo.height;
-      const scale = 1600 / Math.max(w0, h0);
+      const scale = 1024 / Math.max(w0, h0);
       const lw = Math.max(1, Math.round(w0 * scale));
       const lh = Math.max(1, Math.round(h0 * scale));
       const pad = Math.round(Math.max(lw, lh) * 0.04);
@@ -80,8 +80,8 @@ function useLogoTexture(logo: Logo) {
       const sctx = sil.getContext('2d');
       if (!sctx) return;
       const r = pad * 0.8;
-      for (let a = 0; a < 32; a++) {
-        const t = (a / 32) * Math.PI * 2;
+      for (let a = 0; a < 16; a++) {
+        const t = (a / 16) * Math.PI * 2;
         sctx.drawImage(art, Math.cos(t) * r, Math.sin(t) * r);
       }
       sctx.drawImage(art, 0, 0);
