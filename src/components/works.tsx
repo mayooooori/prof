@@ -27,7 +27,9 @@ export default function Works() {
   return (
     <div className='relative flex flex-col items-center min-h-screen '>
       {/* WORKS, with the heading right under it */}
-      <div className='relative z-10 flex flex-col items-center my-10 lg:right-52 lg:my-16'>
+      {/* Shifted left (and a touch smaller on laptops) so it clears the
+          paper-star collage on the right at every width from md up. */}
+      <div className='relative z-10 flex flex-col items-center my-10 md:right-12 lg:right-32 lg:scale-[0.85] xl:right-52 xl:scale-100 lg:my-16'>
         <div className='relative flex'>
           <LetterWord word='WORKS' />
 
@@ -42,7 +44,7 @@ export default function Works() {
             />
           </div>
         </div>
-        <h2 className='mt-8 sm:mt-10 px-4 text-2xl sm:text-4xl text-center'>
+        <h2 className='mt-8 sm:mt-10 px-4 max-w-[440px] lg:max-w-none text-2xl sm:text-3xl lg:text-4xl text-center'>
           my very serious set of works here
         </h2>
       </div>
@@ -51,21 +53,21 @@ export default function Works() {
         alt='paper star'
         width={200}
         height={200}
-        className='absolute top-14 -right-8 w-32 sm:-right-16 sm:w-60 transform -translate-x-1/2 h-auto z-10'
+        className='absolute top-14 -right-8 w-32 sm:-right-16 sm:w-60 md:w-44 md:-right-20 lg:w-48 lg:-right-16 xl:w-60 transform -translate-x-1/2 h-auto z-10'
       />
       <Image
         src={'/paper.png'}
         alt='paper star'
         width={200}
         height={200}
-        className='absolute top-24 -right-16 w-32 sm:-right-32 sm:w-60 transform -translate-x-1/2 h-auto rotate-10 '
+        className='absolute top-24 -right-16 w-32 sm:-right-32 sm:w-60 md:w-44 lg:w-48 xl:w-60 transform -translate-x-1/2 h-auto rotate-10 '
       />
       <Image
         src={'/butter-paper.png'}
         alt='paper star'
         width={650}
         height={650}
-        className='absolute bottom-0 left-24 w-72 sm:left-48 sm:w-[28rem] lg:left-64 lg:w-[650px] transform -translate-x-1/2 h-auto'
+        className='absolute bottom-0 left-24 w-72 sm:left-48 sm:w-[28rem] lg:left-40 lg:w-[26rem] xl:left-64 xl:w-[650px] transform -translate-x-1/2 h-auto'
       />
 
       {/* Each product: a logo popping out of a sheet you can swing around,
@@ -84,7 +86,7 @@ export default function Works() {
               </div>
               <Link
                 href={`/work/${s.slug}`}
-                className='-mt-1 text-xl sm:text-2xl text-center hover:opacity-70 hover:translate-x-1 transition [text-shadow:0_2px_6px_rgba(0,0,0,0.85),0_0_2px_rgba(0,0,0,0.9)]'
+                className='-mt-1 whitespace-nowrap text-xl sm:text-2xl text-center hover:opacity-70 hover:translate-x-1 transition [text-shadow:0_2px_6px_rgba(0,0,0,0.85),0_0_2px_rgba(0,0,0,0.9)]'
               >
                 {s.name} →
               </Link>
