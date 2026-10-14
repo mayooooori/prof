@@ -137,7 +137,7 @@ export type DetailedEntry = {
 
 export const detailed = {
   summary:
-    'Product manager with a software engineering background, taking B2B security and fintech products from problem discovery to working software. Helped define and build an endpoint AI data-protection product and led its Windows launch; independently took a private-markets investment platform from research to a working proof of concept. Strong on discovery, requirements, prioritization, and enterprise rollout with engineering, security, and business stakeholders.',
+    'Product manager with a software engineering background, taking B2B security and fintech products from problem discovery to working software. Helped define and build an endpoint AI data-protection product and led its Windows launch; single-handedly took a private-markets investment platform from research to a working proof of concept. Strong on discovery, requirements, prioritization, and enterprise rollout with engineering, security, and business stakeholders.',
 
   experience: [
     {
@@ -172,7 +172,7 @@ export const detailed = {
       location: 'Bangalore, India',
       dates: 'Mar 2026 – May 2026',
       bullets: [
-        'Independently drove the product from initial problem discovery to a working proof of concept, working directly with the product stakeholder. Defined the product direction, user journeys, MVP scope, data model, and delivery roadmap.',
+        'Single-handedly drove the product from initial problem discovery to a working proof of concept, working directly with the product stakeholder. Defined the product direction, user journeys, MVP scope, data model, and delivery roadmap.',
         'Researched cap-table, fundraising, financial-planning, and private-investment platforms to identify gaps and define a product opportunity around helping family offices discover and evaluate investment opportunities that match their investment criteria.',
         'Mapped 14 user personas across founders, sponsors, investors, family offices, and administrators. Translated their needs into end-to-end journeys, wireframes, product requirements, and a prioritized development backlog.',
         'Designed the core founder and investor workflows, including cap-table management, ownership and funding scenario modeling, financial information, investor profiles, deal discovery, NDA workflows, and data rooms.',
