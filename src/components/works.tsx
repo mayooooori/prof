@@ -1,26 +1,50 @@
 'use client';
 
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { stories } from '@/content/work';
 import LetterWord from './letter-word';
 
+// Where each sheet sits. Below `lg` they form a loose 2×2 with their own
+// tilt; from `lg` up they are scattered across the section (left as a share
+// of the section width, top in px below the heading), placed to stay clear
+// of the collage on the left and the paper star on the right.
+const placements: { tilt: string; left: string; top: string }[] = [
+  { tilt: '-rotate-[7deg] translate-y-2 lg:translate-y-0', left: '29%', top: '50px' }, // Astralink: upper left
+  { tilt: 'rotate-[5deg] translate-y-8 lg:translate-y-0', left: '42%', top: '320px' }, // SpindL: lower middle
+  { tilt: '-rotate-[4deg] -translate-y-1 lg:translate-y-0', left: '57%', top: '0px' }, // offlyn.love: upper right
+  { tilt: 'rotate-[8deg] translate-y-6 lg:translate-y-0', left: '68%', top: '340px' }, // Wave: lower far right
+];
+
+// three.js only loads in the browser, and only when this section mounts.
+const LogoSheet = dynamic(() => import('./logo-sheet'), {
+  ssr: false,
+  loading: () => <div className='aspect-square w-full' />,
+});
+
 export default function Works() {
   return (
     <div className='relative flex flex-col items-center min-h-screen '>
-      <div className='relative flex my-10 lg:right-52 lg:my-16'>
-        <LetterWord word='WORKS' />
+      {/* WORKS, with the heading right under it */}
+      <div className='relative z-10 flex flex-col items-center my-10 lg:right-52 lg:my-16'>
+        <div className='relative flex'>
+          <LetterWord word='WORKS' />
 
-        <div className='absolute -top-10 -left-6 w-14 h-14 sm:-top-16 sm:-left-16 sm:w-24 sm:h-24 float-animation float-delay-4'>
-          <Image
-            src='/star.svg'
-            alt='Star'
-            width={96}
-            height={96}
-            priority
-            className='w-full h-auto'
-          />
+          <div className='absolute -top-10 -left-6 w-14 h-14 sm:-top-16 sm:-left-16 sm:w-24 sm:h-24 float-animation float-delay-4'>
+            <Image
+              src='/star.svg'
+              alt='Star'
+              width={96}
+              height={96}
+              priority
+              className='w-full h-auto'
+            />
+          </div>
         </div>
+        <h2 className='mt-8 sm:mt-10 px-4 text-2xl sm:text-4xl text-center'>
+          my very serious set of works here
+        </h2>
       </div>
       <Image
         src={'/paper-star.png'}
@@ -43,18 +67,31 @@ export default function Works() {
         height={650}
         className='absolute bottom-0 left-24 w-72 sm:left-48 sm:w-[28rem] lg:left-64 lg:w-[650px] transform -translate-x-1/2 h-auto'
       />
-      <div className='relative z-10 flex flex-col items-center mt-16 lg:mt-24 px-4'>
-        <h2 className='text-2xl sm:text-4xl text-center'>my very serious set of works here</h2>
-        <ul className='mt-8 lg:mt-12 text-xl sm:text-2xl flex flex-col gap-5 text-center'>
-          {stories.map((s) => (
-            <li key={s.slug}>
-              <Link href={`/work/${s.slug}`} className='hover:opacity-70 transition-opacity'>
+
+      {/* Each product: a logo popping out of a sheet you can swing around,
+          and under it the name + arrow that opens the story. */}
+      <ul className='relative z-10 grid grid-cols-2 gap-x-6 gap-y-8 sm:gap-x-14 w-full max-w-[460px] px-4 mt-4 mb-16 lg:block lg:max-w-none lg:px-0 lg:mt-0 lg:mb-0 lg:h-[620px]'>
+        {stories.map((s, i) => {
+          const p = placements[i % placements.length];
+          return (
+            <li
+              key={s.slug}
+              style={{ ['--left' as string]: p.left, ['--top' as string]: p.top }}
+              className={`flex flex-col items-center ${p.tilt} lg:absolute lg:w-[13%] lg:min-w-[150px] lg:max-w-[210px] lg:left-[var(--left)] lg:top-[var(--top)]`}
+            >
+              <div className='w-full max-w-[160px] sm:max-w-[175px] lg:max-w-none'>
+                <LogoSheet logo={s.logo} accent={s.accent} scale={s.slug === 'offlyn' ? 0.72 : 1} />
+              </div>
+              <Link
+                href={`/work/${s.slug}`}
+                className='-mt-1 text-xl sm:text-2xl text-center hover:opacity-70 hover:translate-x-1 transition [text-shadow:0_2px_6px_rgba(0,0,0,0.85),0_0_2px_rgba(0,0,0,0.9)]'
+              >
                 {s.name} →
               </Link>
             </li>
-          ))}
-        </ul>
-      </div>
+          );
+        })}
+      </ul>
     </div>
   );
 }
