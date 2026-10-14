@@ -1,7 +1,6 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { Paper } from './paper';
-import { Chip, Heading, scatter, SkillsCard } from './resume-parts';
+import { Heading, LogoImage, OrgBadge, scatter, SkillsCard } from './resume-parts';
 import { resume, type Entry } from '@/content/resume';
 
 function EntryCard({
@@ -17,14 +16,8 @@ function EntryCard({
     <Paper className={`w-[95%] ${className}`} tape={tape} accent={entry.accent}>
       {/* Logo + company chip */}
       <div className='flex items-center justify-between gap-3 mb-4'>
-        <Image
-          src={entry.logo.src}
-          alt={entry.logo.alt}
-          width={entry.logo.width}
-          height={entry.logo.height}
-          className='h-8 sm:h-10 w-auto'
-        />
-        <Chip color={entry.accent}>{entry.org}</Chip>
+        <LogoImage logo={entry.logo} />
+        <OrgBadge org={entry.org} color={entry.accent} logo={entry.orgLogo} />
       </div>
 
       {/* What it is */}

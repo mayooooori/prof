@@ -3,7 +3,23 @@
 // (per Mayuri, 2026-10-14).
 // The phone number is left out on purpose: this site is public.
 
-export type Logo = { src: string; alt: string; width: number; height: number };
+export type Logo = {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  /** For logos on a white square (the LinkedIn JPEGs): multiply-blend so the
+   *  white takes on the paper colour instead of showing as a white tile. */
+  blend?: boolean;
+};
+
+/** Company logos, from the companies' LinkedIn pages and Wave's site. */
+export const logos = {
+  nextech: { src: '/logos/nextech.jpg', alt: 'NexTech', width: 200, height: 200, blend: true },
+  purview: { src: '/logos/purview.jpg', alt: 'Purview', width: 200, height: 200, blend: true },
+  sjce: { src: '/logos/sjce.jpg', alt: "St. Joseph's College of Engineering", width: 200, height: 200, blend: true },
+  wave: { src: '/logos/wave.png', alt: 'Wave', width: 180, height: 180 },
+} satisfies Record<string, Logo>;
 
 export type Entry = {
   org: string;
@@ -11,6 +27,8 @@ export type Entry = {
   product: string;
   /** Product logo shown at the top of the card. */
   logo: Logo;
+  /** Small company mark shown beside the company chip. */
+  orgLogo?: Logo;
   /** Brand colour for the card's tape, edge, company chip and tags. */
   accent: string;
   /** One line on what the product is. */
@@ -39,6 +57,7 @@ export const resume = {
       org: 'NexTech',
       product: 'Astralink',
       logo: { src: '/logos/astralink.svg', alt: 'Astralink', width: 554, height: 191 },
+      orgLogo: logos.nextech,
       accent: '#2563eb',
       tagline: 'Stops sensitive company data from reaching ChatGPT and other AI tools.',
       role: 'Product Engineer I',
@@ -55,6 +74,7 @@ export const resume = {
       org: 'NexTech',
       product: 'SpindL',
       logo: { src: '/logos/spindl.svg', alt: 'SpindL', width: 89, height: 32 },
+      orgLogo: logos.nextech,
       accent: '#8a5a14',
       tagline: 'Private-markets investment platform, taken from research to a working proof of concept.',
       role: 'Product Engineer I',
@@ -90,6 +110,8 @@ export type DetailedEntry = {
   /** Product or project name shown as the card title, after the org. */
   product?: string;
   logo?: Logo;
+  /** Small company mark shown beside the company chip. */
+  orgLogo?: Logo;
   /** Card colour: tape, left edge, company chip and bullet marks. */
   accent: string;
   role: string;
@@ -108,6 +130,7 @@ export const detailed = {
       org: 'NexTech',
       product: 'Astralink, AI Data Protection for Endpoints',
       logo: { src: '/logos/astralink.svg', alt: 'Astralink', width: 554, height: 191 },
+      orgLogo: logos.nextech,
       accent: '#2563eb',
       role: 'Product Engineer I',
       location: 'Bangalore, India',
@@ -125,6 +148,7 @@ export const detailed = {
       org: 'NexTech',
       product: 'SpindL, Private-Market Investment Platform',
       logo: { src: '/logos/spindl.svg', alt: 'SpindL', width: 89, height: 32 },
+      orgLogo: logos.nextech,
       accent: '#8a5a14',
       role: 'Product Engineer I',
       location: 'Bangalore, India',
@@ -141,7 +165,8 @@ export const detailed = {
     },
     {
       org: 'NexTech',
-      accent: '#6d28d9',
+      logo: logos.nextech,
+      accent: '#6844FF',
       role: 'Junior Frontend Engineer',
       location: 'Bangalore, India',
       dates: 'May 2025 – May 2026',
@@ -153,6 +178,7 @@ export const detailed = {
     },
     {
       org: 'Purview Services',
+      logo: logos.purview,
       accent: '#15803d',
       role: 'Software Engineer Intern',
       location: 'Hyderabad, India',
@@ -178,6 +204,7 @@ export const detailed = {
     },
     {
       org: 'Wave',
+      logo: logos.wave,
       accent: '#0e7490',
       role: 'Enterprise Product Strategy & Packaging',
       bullets: [
@@ -194,5 +221,6 @@ export const detailed = {
     publication: 'Publication: Ensemble Stacking Methodology for Identifying Heart Disease, ICOSEC 2023',
     dates: '2020 – 2024',
     accent: '#334155',
+    logo: logos.sjce,
   },
 };

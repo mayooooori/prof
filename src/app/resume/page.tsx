@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import LetterWord from '@/components/letter-word';
 import { BowCard, Paper } from '@/components/paper';
-import { Chip, DetailedCard, Heading, scatter, SkillsCard } from '@/components/resume-parts';
+import { Chip, DetailedCard, Heading, LogoImage, scatter, SkillsCard } from '@/components/resume-parts';
 import { detailed } from '@/content/resume';
 
 export const metadata: Metadata = {
@@ -71,7 +71,8 @@ export default function ResumePage() {
             tape={3}
             accent={edu.accent}
           >
-            <div className='flex items-center justify-end mb-4'>
+            <div className='flex items-center justify-between gap-3 mb-4'>
+              <LogoImage logo={edu.logo} className='h-12 sm:h-14' />
               <Chip color={edu.accent}>{edu.location}</Chip>
             </div>
             <div className='flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-x-4'>

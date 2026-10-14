@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { Paper } from './paper';
-import { resume, type DetailedEntry } from '@/content/resume';
+import { resume, type DetailedEntry, type Logo } from '@/content/resume';
 
 // Collage placement for a column of cards. On phones the cards keep a small
 // zigzag and tilt so the text stays easy to read; from `lg` up they are
@@ -24,6 +24,30 @@ export function Heading({
     <h3 className={`text-white text-2xl sm:text-3xl mb-6 sm:mb-8 ${className}`}>
       {children} <span aria-hidden>✦</span>
     </h3>
+  );
+}
+
+/** A logo at card-header size. LinkedIn JPEGs sit on white, so they are
+ *  multiply-blended into the paper colour. */
+export function LogoImage({ logo, className = 'h-8 sm:h-10' }: { logo: Logo; className?: string }) {
+  return (
+    <Image
+      src={logo.src}
+      alt={logo.alt}
+      width={logo.width}
+      height={logo.height}
+      className={`${className} w-auto ${logo.blend ? 'mix-blend-multiply' : ''}`}
+    />
+  );
+}
+
+/** The company chip, with the company's small mark beside it when known. */
+export function OrgBadge({ org, color, logo }: { org: string; color: string; logo?: Logo }) {
+  return (
+    <span className='flex items-center gap-2 shrink-0'>
+      {logo && <LogoImage logo={logo} className='h-7 sm:h-8' />}
+      <Chip color={color}>{org}</Chip>
+    </span>
   );
 }
 
@@ -87,18 +111,8 @@ export function DetailedCard({
   return (
     <Paper className={`w-[95%] ${className}`} tape={tape} accent={entry.accent}>
       <div className='flex items-center justify-between gap-3 mb-4'>
-        {entry.logo ? (
-          <Image
-            src={entry.logo.src}
-            alt={entry.logo.alt}
-            width={entry.logo.width}
-            height={entry.logo.height}
-            className='h-8 sm:h-10 w-auto'
-          />
-        ) : (
-          <span />
-        )}
-        <Chip color={entry.accent}>{entry.org}</Chip>
+        {entry.logo ? <LogoImage logo={entry.logo} /> : <span />}
+        <OrgBadge org={entry.org} color={entry.accent} logo={entry.orgLogo} />
       </div>
 
       <div className='flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-x-4'>
