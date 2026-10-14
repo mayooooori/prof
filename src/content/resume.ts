@@ -1,9 +1,16 @@
 // Resume content, transcribed from mayuri_pm_resume_ats.pdf.
-// SpindL sits under IntelXLabs as Product Engineer I (per Mayuri, 2026-10-14).
+// IntelXLabs is now NexTech; SpindL sits under it as Product Engineer I
+// (per Mayuri, 2026-10-14).
 // The phone number is left out on purpose: this site is public.
+
+export type Logo = { src: string; alt: string; width: number; height: number };
 
 export type Entry = {
   org: string;
+  /** Product logo shown at the top of the card. */
+  logo?: Logo;
+  /** Brand colour for the card's tape, edge and company chip. */
+  accent: string;
   product?: string;
   orgUrl?: string;
   role: string;
@@ -26,8 +33,10 @@ export const resume = {
 
   experience: [
     {
-      org: 'IntelXLabs',
+      org: 'NexTech',
       product: 'Astralink, AI Data Protection for Endpoints',
+      logo: { src: '/logos/astralink.svg', alt: 'Astralink', width: 554, height: 191 },
+      accent: '#2563eb',
       role: 'Product Engineer I',
       location: 'Bangalore, India',
       dates: 'Jun 2026 – Present',
@@ -41,8 +50,10 @@ export const resume = {
       ],
     },
     {
-      org: 'IntelXLabs',
+      org: 'NexTech',
       product: 'SpindL, Private-Market Investment Platform',
+      logo: { src: '/logos/spindl.svg', alt: 'SpindL', width: 89, height: 32 },
+      accent: '#8a5a14',
       role: 'Product Engineer I',
       location: 'Bangalore, India',
       dates: 'Mar 2026 – May 2026',
@@ -57,7 +68,8 @@ export const resume = {
       ],
     },
     {
-      org: 'IntelXLabs',
+      org: 'NexTech',
+      accent: '#c2335f',
       role: 'Junior Frontend Engineer',
       location: 'Bangalore, India',
       dates: 'May 2025 – May 2026',
@@ -69,6 +81,7 @@ export const resume = {
     },
     {
       org: 'Purview Services',
+      accent: '#1f7a6e',
       role: 'Software Engineer Intern',
       location: 'Hyderabad, India',
       dates: 'Jul 2024 – Dec 2024',

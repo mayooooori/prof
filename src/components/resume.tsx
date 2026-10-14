@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { Courier_Prime } from 'next/font/google';
 import { resume, type Entry } from '@/content/resume';
 
@@ -24,23 +25,30 @@ const tapes = [
   'left-1/3 rotate-2',
 ];
 
+const PAPER_TAPE = '#e9dcb8';
+
 function Paper({
   children,
   className = '',
   tape = 0,
+  accent,
 }: {
   children: React.ReactNode;
   className?: string;
   tape?: number;
+  /** Brand colour: tints the tape and draws a coloured left edge. */
+  accent?: string;
 }) {
   return (
     <div
-      className={`${typewriter.className} ${className} relative bg-[#f4ecdc] text-[#1f1b16] rounded-sm shadow-[0_8px_24px_rgba(0,0,0,0.4)] px-5 py-6 sm:px-8 sm:py-7`}
+      className={`${typewriter.className} ${className} relative bg-[#f4ecdc] text-[#1f1b16] rounded-sm shadow-[0_8px_24px_rgba(0,0,0,0.4)] px-5 py-6 sm:px-8 sm:py-7 ${accent ? 'border-l-[6px]' : ''}`}
+      style={accent ? { borderLeftColor: accent } : undefined}
     >
       {/* Tape */}
       <span
         aria-hidden
-        className={`absolute -top-3 ${tapes[tape % tapes.length]} w-20 sm:w-24 h-6 bg-[#e9dcb8]/75 shadow-sm`}
+        className={`absolute -top-3 ${tapes[tape % tapes.length]} w-20 sm:w-24 h-6 shadow-sm`}
+        style={{ backgroundColor: `${accent ?? PAPER_TAPE}bb` }}
       />
       {children}
     </div>
@@ -61,6 +69,17 @@ function Heading({
   );
 }
 
+function Chip({ children, color }: { children: React.ReactNode; color: string }) {
+  return (
+    <span
+      className='inline-block rounded-full px-3 py-1 text-xs sm:text-sm font-bold text-white tracking-wide'
+      style={{ backgroundColor: color }}
+    >
+      {children}
+    </span>
+  );
+}
+
 function EntryCard({
   entry,
   className,
@@ -71,18 +90,25 @@ function EntryCard({
   tape: number;
 }) {
   return (
-    <Paper className={`w-[95%] ${className}`} tape={tape}>
+    <Paper className={`w-[95%] ${className}`} tape={tape} accent={entry.accent}>
+      {/* Logo + company chip */}
+      <div className='flex items-center justify-between gap-3 mb-4'>
+        {entry.logo ? (
+          <Image
+            src={entry.logo.src}
+            alt={entry.logo.alt}
+            width={entry.logo.width}
+            height={entry.logo.height}
+            className='h-8 sm:h-10 w-auto'
+          />
+        ) : (
+          <span />
+        )}
+        <Chip color={entry.accent}>{entry.org}</Chip>
+      </div>
+
       <div className='flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-x-4'>
-        <p className='font-bold text-base sm:text-lg'>
-          {entry.orgUrl ? (
-            <a href={entry.orgUrl} target='_blank' rel='noopener noreferrer' className='underline underline-offset-4'>
-              {entry.org}
-            </a>
-          ) : (
-            entry.org
-          )}
-          {entry.product && <span className='font-normal'> – {entry.product}</span>}
-        </p>
+        <p className='font-bold text-base sm:text-lg'>{entry.product ?? entry.org}</p>
         {entry.location && <p className='text-sm shrink-0'>{entry.location}</p>}
       </div>
       <div className='flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-x-4 mt-1'>
@@ -92,7 +118,9 @@ function EntryCard({
       <ul className='mt-4 flex flex-col gap-2.5 text-sm sm:text-[15px] leading-relaxed'>
         {entry.bullets.map((b) => (
           <li key={b} className='flex gap-2.5'>
-            <span aria-hidden className='shrink-0'>•</span>
+            <span aria-hidden className='shrink-0' style={{ color: entry.accent }}>
+              ✦
+            </span>
             <span>{b}</span>
           </li>
         ))}
@@ -100,6 +128,12 @@ function EntryCard({
     </Paper>
   );
 }
+
+// Skill tags: one colour family per group.
+const skillColors: Record<string, { bg: string; fg: string }> = {
+  Product: { bg: '#f8d3df', fg: '#7a1f3d' },
+  Technical: { bg: '#d4e3fb', fg: '#1e3a8a' },
+};
 
 export default function Resume() {
   return (
@@ -127,12 +161,26 @@ export default function Resume() {
         <div className='flex flex-col'>
           <Heading className='self-end lg:mr-[20%] rotate-2'>skills</Heading>
           <Paper className='self-end w-[95%] lg:w-[64%] lg:mr-[5%] rotate-[0.6deg] lg:rotate-[1.4deg]' tape={2}>
-            <div className='flex flex-col gap-4 text-sm sm:text-[15px] leading-relaxed'>
-              {resume.skills.map((s) => (
-                <p key={s.label}>
-                  <span className='font-bold'>{s.label}:</span> {s.text}
-                </p>
-              ))}
+            <div className='flex flex-col gap-5'>
+              {resume.skills.map((s) => {
+                const c = skillColors[s.label] ?? skillColors.Product;
+                return (
+                  <div key={s.label}>
+                    <p className='font-bold text-sm sm:text-base mb-2.5'>{s.label}</p>
+                    <ul className='flex flex-wrap gap-2'>
+                      {s.text.split(', ').map((skill) => (
+                        <li
+                          key={skill}
+                          className='rounded-full px-3 py-1 text-xs sm:text-sm'
+                          style={{ backgroundColor: c.bg, color: c.fg }}
+                        >
+                          {skill}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                );
+              })}
             </div>
           </Paper>
         </div>
