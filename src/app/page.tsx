@@ -5,7 +5,7 @@ import EvaporateImage from "@/components/evaporate";
 import Hearts from "@/components/Hearts";
 import Hello from "@/components/hello";
 import Popup from "@/components/Popup";
-import ThankYou from "@/components/thankyou";
+import ResumeReveal from "@/components/resume-reveal";
 import Works from "@/components/works";
 import ZoomFadeImage from "@/components/zoomFade";
 import Image from "next/image";
@@ -97,7 +97,12 @@ export default function Home() {
       </div>
 
       {/* Resume reveal: zooms through the pearl girl into the resume (manages its own scroll height + sticky pin) */}
-      <ThankYou />
+      <ResumeReveal />
+
+      {/* Thanks Section */}
+      <div className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
+        <LetterWord word="THANKS" size="thanks" delays={[1, 2, 3, 4, 1, 2]} />
+      </div>
 
       {/* Contact Section */}
       <div id="contact" className="relative min-h-screen overflow-hidden scroll-mt-4">
