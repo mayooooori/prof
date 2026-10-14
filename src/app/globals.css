@@ -165,3 +165,9 @@ h2 {
     animation: none;
   }
 }
+
+/* The offlyn story page's floating match card (offlyn.love's `float`). */
+@keyframes offlyn-float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}

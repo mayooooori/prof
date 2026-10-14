@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import LetterWord from '@/components/letter-word';
+import OfflynStory from '@/components/offlyn-story';
 import { Paper } from '@/components/paper';
 import { Heading, ProductLogo } from '@/components/resume-parts';
 import { Sticker } from '@/components/stickers';
@@ -35,6 +36,9 @@ export default async function StoryPage({ params }: { params: Promise<Params> })
 
   const i = stories.findIndex((s) => s.slug === story.slug);
   const next = stories[(i + 1) % stories.length];
+
+  // offlyn's story wears offlyn.love's own look.
+  if (story.slug === 'offlyn') return <OfflynStory nextStory={next} />;
 
   return (
     <main className='relative min-h-screen px-4 sm:px-6 pt-8 pb-24 overflow-x-hidden'>
