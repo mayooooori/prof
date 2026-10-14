@@ -3,9 +3,11 @@
 // A product logo in 3D, popping out of a flat paper sheet. The sheet is a
 // normal page element (cream paper, washi tape across the top); only the logo
 // is WebGL. Drag to swing the logo around; let go and it springs back with a
-// little bounce. It floats above the paper and lifts further on hover.
+// little bounce. It floats above the paper and lifts further on hover. With
+// `href`, a tap (a press that barely moves) opens that page; a drag doesn't.
 
 import { Canvas, useFrame } from '@react-three/fiber';
+import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useMemo, useState } from 'react';
 import * as THREE from 'three';
 import type { Logo } from '@/content/resume';
@@ -13,9 +15,13 @@ import type { Logo } from '@/content/resume';
 // Where the logo rests, and how far a drag may swing it.
 const REST = { x: -0.12, y: 0.22 };
 const LIMIT = { x: 0.8, y: 1.15 };
+// How far (px) a press may travel and still count as a tap.
+const TAP_SLOP = 6;
 
 type DragState = {
   active: boolean;
+  startX: number;
+  startY: number;
   lastX: number;
   lastY: number;
   lastT: number;
@@ -267,16 +273,22 @@ export default function LogoSheet({
   logo,
   accent,
   scale = 1,
+  href,
 }: {
   logo: Logo;
   accent: string;
+  /** Page a tap on the sheet opens. */
+  href?: string;
   /** Size of the logo relative to the default (e.g. 0.8 for a bulkier mark). */
   scale?: number;
 }) {
+  const router = useRouter();
   const wrap = useRef<HTMLDivElement>(null);
   const hover = useRef(false);
   const drag = useRef<DragState>({
     active: false,
+    startX: 0,
+    startY: 0,
     lastX: 0,
     lastY: 0,
     lastT: 0,
@@ -308,6 +320,8 @@ export default function LogoSheet({
   const onPointerDown = (e: React.PointerEvent) => {
     const d = drag.current;
     d.active = true;
+    d.startX = e.clientX;
+    d.startY = e.clientY;
     d.lastX = e.clientX;
     d.lastY = e.clientY;
     d.lastT = performance.now();
@@ -339,17 +353,27 @@ export default function LogoSheet({
     d.velY = THREE.MathUtils.clamp(d.velY, -8, 8);
   };
 
+  const onPointerUp = (e: React.PointerEvent) => {
+    const d = drag.current;
+    const tapped = d.active && Math.hypot(e.clientX - d.startX, e.clientY - d.startY) < TAP_SLOP;
+    release();
+    if (href && tapped) router.push(href);
+  };
+
   return (
     <div
       ref={wrap}
       aria-hidden
       data-logo-sheet={logo.alt}
-      className='relative aspect-square w-full cursor-grab active:cursor-grabbing select-none touch-pan-y'
+      className={`relative aspect-square w-full select-none touch-pan-y ${href ? 'cursor-pointer' : 'cursor-grab active:cursor-grabbing'}`}
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
-      onPointerUp={release}
+      onPointerUp={onPointerUp}
       onPointerCancel={release}
-      onPointerEnter={() => (hover.current = true)}
+      onPointerEnter={() => {
+        hover.current = true;
+        if (href) router.prefetch(href);
+      }}
       onPointerLeave={() => {
         hover.current = false;
       }}

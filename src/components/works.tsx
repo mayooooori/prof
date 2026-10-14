@@ -82,7 +82,12 @@ export default function Works() {
               className={`flex flex-col items-center ${p.tilt} lg:absolute lg:w-[13%] lg:min-w-[150px] lg:max-w-[210px] lg:left-[var(--left)] lg:top-[var(--top)]`}
             >
               <div className='w-full max-w-[160px] sm:max-w-[175px] lg:max-w-none'>
-                <LogoSheet logo={s.logo} accent={s.accent} scale={s.slug === 'offlyn' ? 0.72 : 1} />
+                <LogoSheet
+                  logo={s.logo}
+                  accent={s.accent}
+                  scale={s.slug === 'offlyn' ? 0.72 : 1}
+                  href={`/work/${s.slug}`}
+                />
               </div>
               <Link
                 href={`/work/${s.slug}`}
