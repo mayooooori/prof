@@ -99,3 +99,69 @@ h2 {
   will-change: opacity, transform;
   filter: drop-shadow(0 0 3px rgba(240, 176, 62, 0.55));
 }
+
+/* ---------------------------------------------------------------------------
+   Resume-page sticker motion. These animate the individual `translate`,
+   `rotate` and `scale` properties, which compose with an element's own
+   `transform`, so each sticker keeps its Tailwind tilt while it moves. */
+
+@keyframes sticker-float {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -10px; }
+}
+
+@keyframes sticker-sway {
+  0%, 100% { rotate: -7deg; translate: 0 0; }
+  50% { rotate: 7deg; translate: 0 -6px; }
+}
+
+@keyframes sticker-twinkle {
+  0%, 100% { scale: 0.88; opacity: 0.75; }
+  50% { scale: 1.08; opacity: 1; }
+}
+
+@keyframes sticker-heartbeat {
+  0%, 60%, 100% { scale: 1; }
+  15% { scale: 1.14; }
+  30% { scale: 0.98; }
+  45% { scale: 1.1; }
+}
+
+@keyframes sticker-flutter-wings {
+  0%, 100% { scale: 1 1; }
+  50% { scale: 0.72 1; }
+}
+
+@keyframes sticker-flutter-drift {
+  0%, 100% { translate: 0 0; rotate: -4deg; }
+  33% { translate: 10px -12px; rotate: 3deg; }
+  66% { translate: -6px -6px; rotate: -2deg; }
+}
+
+@keyframes sticker-orbit {
+  0%, 100% { rotate: -10deg; translate: 0 0; }
+  50% { rotate: 10deg; translate: 0 -8px; }
+}
+
+.sticker-float { animation: sticker-float 4s ease-in-out infinite; }
+.sticker-sway { animation: sticker-sway 3.6s ease-in-out infinite; }
+.sticker-twinkle { animation: sticker-twinkle 2.2s ease-in-out infinite; }
+.sticker-heartbeat { animation: sticker-heartbeat 1.8s ease-in-out infinite; }
+.sticker-orbit { animation: sticker-orbit 6s ease-in-out infinite; }
+/* Wings flap fast while the whole butterfly drifts slowly. */
+.sticker-flutter {
+  animation:
+    sticker-flutter-wings 0.7s ease-in-out infinite,
+    sticker-flutter-drift 7s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sticker-float,
+  .sticker-sway,
+  .sticker-twinkle,
+  .sticker-heartbeat,
+  .sticker-orbit,
+  .sticker-flutter {
+    animation: none;
+  }
+}

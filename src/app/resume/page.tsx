@@ -13,16 +13,26 @@ export const metadata: Metadata = {
 
 // Chrome and pink stickers scattered in the gaps. Each sits before the cards
 // in its section, so cards paint over it and a sticker never covers text.
+// Each one moves in its own way (see the sticker-* animations in
+// globals.css); `delay` staggers repeats of the same sticker.
 const stickers = {
-  starRing: { src: '/stickers/chrome-star-ring.png', w: 420, h: 594 },
-  sparkles: { src: '/stickers/chrome-sparkles.png', w: 500, h: 500 },
-  stars: { src: '/stickers/chrome-stars.png', w: 375, h: 666 },
-  heart: { src: '/stickers/pink-heart.png', w: 500, h: 500 },
-  butterfly: { src: '/stickers/pink-butterfly.png', w: 500, h: 500 },
-  bow: { src: '/stickers/pink-bow.png', w: 500, h: 500 },
+  starRing: { src: '/stickers/chrome-star-ring.png', w: 420, h: 594, motion: 'sticker-orbit' },
+  sparkles: { src: '/stickers/chrome-sparkles.png', w: 500, h: 500, motion: 'sticker-twinkle' },
+  stars: { src: '/stickers/chrome-stars.png', w: 375, h: 666, motion: 'sticker-float' },
+  heart: { src: '/stickers/pink-heart.png', w: 500, h: 500, motion: 'sticker-heartbeat' },
+  butterfly: { src: '/stickers/pink-butterfly.png', w: 500, h: 500, motion: 'sticker-flutter' },
+  bow: { src: '/stickers/pink-bow.png', w: 500, h: 500, motion: 'sticker-sway' },
 };
 
-function Sticker({ name, className }: { name: keyof typeof stickers; className: string }) {
+function Sticker({
+  name,
+  className,
+  delay = 0,
+}: {
+  name: keyof typeof stickers;
+  className: string;
+  delay?: number;
+}) {
   const st = stickers[name];
   return (
     <Image
@@ -31,7 +41,8 @@ function Sticker({ name, className }: { name: keyof typeof stickers; className: 
       aria-hidden
       width={st.w}
       height={st.h}
-      className={`pointer-events-none absolute h-auto drop-shadow-[0_6px_10px_rgba(0,0,0,0.35)] ${className}`}
+      style={delay ? { animationDelay: `${delay}s` } : undefined}
+      className={`pointer-events-none absolute h-auto drop-shadow-[0_6px_10px_rgba(0,0,0,0.35)] ${st.motion} ${className}`}
     />
   );
 }
@@ -82,8 +93,8 @@ export default function ResumePage() {
         </div>
 
         <div className='relative flex flex-col'>
-          <Sticker name='stars' className='w-10 -top-4 left-[6%] sm:w-14 lg:hidden rotate-6' />
-          <Sticker name='sparkles' className='hidden lg:block w-36 top-[8%] left-[6%] -rotate-6' />
+          <Sticker name='stars' delay={1.5} className='w-10 -top-4 left-[6%] sm:w-14 lg:hidden rotate-6' />
+          <Sticker name='sparkles' delay={0.9} className='hidden lg:block w-36 top-[8%] left-[6%] -rotate-6' />
           <Heading className='self-end lg:mr-[10%] rotate-2'>selected projects</Heading>
           <div className='flex flex-col gap-8 lg:gap-0'>
             {detailed.projects.map((e, i) => (
@@ -98,15 +109,15 @@ export default function ResumePage() {
         </div>
 
         <div className='relative flex flex-col'>
-          <Sticker name='heart' className='w-12 -top-3 right-[6%] sm:w-16 lg:hidden rotate-12' />
-          <Sticker name='butterfly' className='hidden lg:block w-36 top-[18%] right-[6%] rotate-12' />
+          <Sticker name='heart' delay={0.6} className='w-12 -top-3 right-[6%] sm:w-16 lg:hidden rotate-12' />
+          <Sticker name='butterfly' delay={2.4} className='hidden lg:block w-36 top-[18%] right-[6%] rotate-12' />
           <Heading className='self-start lg:ml-[8%] -rotate-2'>skills</Heading>
           <SkillsCard className='self-start w-[95%] lg:w-[64%] lg:ml-[4%] -rotate-[0.6deg] lg:-rotate-[1.2deg]' />
         </div>
 
         <div className='relative flex flex-col'>
-          <Sticker name='bow' className='w-14 -top-4 left-[4%] sm:w-20 lg:hidden -rotate-6' />
-          <Sticker name='starRing' className='hidden lg:block w-32 top-[10%] left-[10%] -rotate-12' />
+          <Sticker name='bow' delay={1.8} className='w-14 -top-4 left-[4%] sm:w-20 lg:hidden -rotate-6' />
+          <Sticker name='starRing' delay={3} className='hidden lg:block w-32 top-[10%] left-[10%] -rotate-12' />
           <Heading className='self-end lg:mr-[18%] rotate-2'>education</Heading>
           <Paper
             className='self-end w-[95%] lg:w-[58%] lg:mr-[6%] rotate-[0.6deg] lg:rotate-[1.6deg]'
