@@ -217,7 +217,7 @@ export const detailed = {
       url: 'https://offlyn.love',
       story: 'offlyn',
       bullets: [
-        'Co-built and launched a consumer dating product in Bengaluru as a two-person team, taking it from an initial waitlist with no backend to a public product launch.',
+        'Co-built a consumer dating product in Bengaluru as a two-person team, taking it from an initial waitlist with no backend to submission on the Google Play Store and Apple App Store.',
         'Owned product requirements, user flows, roadmap, go-to-market planning, and trust and safety considerations; defined activation, retention, and referral metrics.',
         'Talked to prospective users to understand how they would use the product; the conversations showed that some users could be problematic, which led to a dedicated use case for handling them.',
       ],
