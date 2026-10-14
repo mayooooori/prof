@@ -10,6 +10,7 @@ import Resume from "@/components/resume";
 import Works from "@/components/works";
 import ZoomFadeImage from "@/components/zoomFade";
 import Image from "next/image";
+import Link from "next/link";
 import LetterWord from "@/components/letter-word";
 
 export default function Home() {
@@ -47,11 +48,16 @@ export default function Home() {
           className="absolute bottom-28 left-1/2 w-28 sm:w-40 lg:w-48 h-auto "
         />
 
-        <div className="absolute bottom-8 left-1/2 z-20 transform -translate-x-1/2 flex gap-6 sm:gap-12">
+        <div className="absolute bottom-8 left-1/2 z-20 transform -translate-x-1/2 flex gap-4 sm:gap-12">
           {/* Works Button */}
           <a href="#works" aria-label="Go to works" className="flex items-center">
             <LetterWord word="WORKS" size="nav" evaporate float={false} />
           </a>
+
+          {/* Resume Button: the detailed resume page */}
+          <Link href="/resume" aria-label="Go to resume" className="flex items-center">
+            <LetterWord word="RESUME" size="nav" evaporate float={false} />
+          </Link>
 
           {/* Contact Button */}
           <a href="#contact" aria-label="Go to contact" className="flex items-center">

@@ -1,42 +1,8 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { Paper } from './paper';
+import { Chip, Heading, scatter, SkillsCard } from './resume-parts';
 import { resume, type Entry } from '@/content/resume';
-
-// Collage placement for each experience card. On phones the cards keep a
-// small zigzag and tilt so the text stays easy to read; from `lg` up they are
-// narrower, scattered left and right, tilted more, and tuck slightly under
-// each other at the corners.
-const scatter = [
-  'self-start -rotate-[0.8deg] lg:w-[60%] lg:ml-[2%] lg:-rotate-[2deg]',
-  'self-end rotate-[0.8deg] lg:w-[60%] lg:mr-[3%] lg:rotate-[1.6deg] lg:-mt-3',
-  'self-start -rotate-[0.5deg] lg:w-[58%] lg:ml-[15%] lg:-rotate-[1.2deg] lg:-mt-3',
-  'self-end rotate-[0.6deg] lg:w-[60%] lg:mr-[9%] lg:rotate-[2.2deg] lg:-mt-3',
-];
-
-function Heading({
-  children,
-  className = '',
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <h3 className={`text-white text-2xl sm:text-3xl mb-6 sm:mb-8 ${className}`}>
-      {children} <span aria-hidden>✦</span>
-    </h3>
-  );
-}
-
-function Chip({ children, color }: { children: React.ReactNode; color: string }) {
-  return (
-    <span
-      className='inline-block rounded-full px-3 py-1 text-xs sm:text-sm font-bold text-white tracking-wide'
-      style={{ backgroundColor: color }}
-    >
-      {children}
-    </span>
-  );
-}
 
 function EntryCard({
   entry,
@@ -97,12 +63,6 @@ function EntryCard({
   );
 }
 
-// Skill tags: one colour family per group.
-const skillColors: Record<string, { bg: string; fg: string }> = {
-  Product: { bg: '#f8d3df', fg: '#7a1f3d' },
-  Technical: { bg: '#d4e3fb', fg: '#1e3a8a' },
-};
-
 export default function Resume() {
   return (
     <section aria-label='Resume' className='relative px-4 sm:px-6 pt-8 pb-8'>
@@ -119,33 +79,17 @@ export default function Resume() {
               />
             ))}
           </div>
+          <Link
+            href='/resume'
+            className='self-center mt-10 text-white text-xl sm:text-2xl hover:opacity-70 transition-opacity'
+          >
+            detailed resume →
+          </Link>
         </div>
 
         <div className='flex flex-col'>
           <Heading className='self-end lg:mr-[20%] rotate-2'>skills</Heading>
-          <Paper className='self-end w-[95%] lg:w-[64%] lg:mr-[5%] rotate-[0.6deg] lg:rotate-[1.4deg]' tape={2}>
-            <div className='flex flex-col gap-5'>
-              {resume.skills.map((s) => {
-                const c = skillColors[s.label] ?? skillColors.Product;
-                return (
-                  <div key={s.label}>
-                    <p className='font-bold text-sm sm:text-base mb-2.5'>{s.label}</p>
-                    <ul className='flex flex-wrap gap-2'>
-                      {s.text.split(', ').map((skill) => (
-                        <li
-                          key={skill}
-                          className='rounded-full px-3 py-1 text-xs sm:text-sm'
-                          style={{ backgroundColor: c.bg, color: c.fg }}
-                        >
-                          {skill}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                );
-              })}
-            </div>
-          </Paper>
+          <SkillsCard className='self-end w-[95%] lg:w-[64%] lg:mr-[5%] rotate-[0.6deg] lg:rotate-[1.4deg]' />
         </div>
       </div>
     </section>

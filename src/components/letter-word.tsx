@@ -14,8 +14,9 @@ const boxBySize: Record<Size, string> = {
   wide: 'w-10 h-10 mx-0.5 sm:w-16 sm:h-16 sm:mx-2 lg:w-24 lg:h-24 xl:w-32 xl:h-32 xl:mx-3',
   // THANKS: 96px on desktop.
   thanks: 'w-12 h-12 mx-1 sm:w-16 sm:h-16 sm:mx-2 lg:w-24 lg:h-24',
-  // The WORKS / CONTACT buttons in the hero: 32px on desktop.
-  nav: 'w-6 h-6 sm:w-8 sm:h-8',
+  // The WORKS / RESUME / CONTACT buttons in the hero: 32px on desktop,
+  // 16px on phones so all three words fit on one line.
+  nav: 'w-4 h-4 sm:w-6 sm:h-6 lg:w-8 lg:h-8',
 };
 
 const pxBySize: Record<Size, number> = {
