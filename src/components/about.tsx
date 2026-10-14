@@ -32,11 +32,11 @@ export default function About() {
           />
           <BowCard size='snug' className='min-w-0 max-w-md lg:max-w-xl mt-32 sm:mt-0 -rotate-[1deg]'>
             <p className='text-xs sm:text-sm lg:text-[15px] leading-relaxed'>
-              Product manager who used to be a software engineer. I helped build an AI tool that
-              catches company secrets before they get pasted into ChatGPT, then led its Windows
-              launch. I also took an investment platform from &ldquo;what if&rdquo; to a working
-              proof of concept. Big fan of messy problems, tidy roadmaps, and stakeholders who
-              reply to emails.
+              Hi, I&rsquo;m Mayuri. Product engineer, former frontend dev, professional
+              over-thinker of user flows. I started out writing code and now spend most of my time
+              figuring out what&rsquo;s actually worth building. Lately that&rsquo;s been AI data
+              protection and a private-markets platform. I like turning messy problems into clear
+              plans, and I&rsquo;m happiest when the thing actually ships.
             </p>
           </BowCard>
         </div>
