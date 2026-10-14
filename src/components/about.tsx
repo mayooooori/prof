@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import Link from 'next/link';
 import LetterWord from './letter-word';
 
 export default function About() {
@@ -30,18 +29,10 @@ export default function About() {
             height={500}
             className='w-32 shrink-0 sm:w-56 lg:w-72 h-auto'
           />
-          <div className='flex flex-col gap-4 mt-32 sm:mt-0'>
-            <p className='font-handwritten text-white text-lg sm:text-2xl leading-relaxed max-w-md'>
-              Panicking professionally. <br className='hidden sm:inline' /> Very mindful, very demure.{' '}<br className='hidden sm:inline' />
-              But at the end of the day, I&apos;m just a girl 💋
-            </p>
-            <Link
-              href='/resume'
-              className='font-handwritten text-white text-lg sm:text-2xl w-fit hover:opacity-70 transition-opacity'
-            >
-              let&apos;s get to serious business now →
-            </Link>
-          </div>
+          <p className='font-handwritten text-white text-lg sm:text-2xl leading-relaxed max-w-md mt-32 sm:mt-0'>
+            Panicking professionally. <br className='hidden sm:inline' /> Very mindful, very demure.{' '}<br className='hidden sm:inline' />
+            But at the end of the day, I&apos;m just a girl 💋
+          </p>
         </div>
       </div>
     </div>
