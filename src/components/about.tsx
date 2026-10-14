@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import LetterWord from './letter-word';
+import { BowCard } from './paper';
 
 export default function About() {
   return (
@@ -34,6 +35,19 @@ export default function About() {
             But at the end of the day, I&apos;m just a girl 💋
           </p>
         </div>
+      </div>
+
+      {/* The slightly-more-serious version, still not that serious. */}
+      <div className='relative w-full flex justify-center px-4 mt-4 pb-16 sm:pb-24'>
+        <BowCard className='w-[86%] max-w-2xl -rotate-[1deg]'>
+          <p className='text-sm sm:text-[15px] leading-relaxed'>
+            Product manager who used to be a software engineer, so I know exactly how long a
+            &ldquo;tiny change&rdquo; really takes. I helped build an AI tool that catches company
+            secrets before they get pasted into ChatGPT, then led its Windows launch. I also took
+            an investment platform from &ldquo;what if&rdquo; to a working proof of concept. Big fan
+            of messy problems, tidy roadmaps, and stakeholders who reply to emails.
+          </p>
+        </BowCard>
       </div>
     </div>
   );

@@ -28,9 +28,6 @@ export const resume = {
     { label: 'GitHub', href: 'https://github.com/mayooooori' },
   ],
 
-  summary:
-    'Product manager with a software engineering background, taking B2B security and fintech products from problem discovery to working software. Helped define and build an endpoint AI data-protection product and led its Windows launch; independently took a private-markets investment platform from research to a working proof of concept. Strong on discovery, requirements, prioritization, and enterprise rollout with engineering, security, and business stakeholders.',
-
   experience: [
     {
       org: 'NexTech',

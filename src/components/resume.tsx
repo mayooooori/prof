@@ -1,10 +1,6 @@
 import Image from 'next/image';
-import { Courier_Prime } from 'next/font/google';
+import { Paper } from './paper';
 import { resume, type Entry } from '@/content/resume';
-
-// Typewriter text on paper cards: fits the collage, and stays readable for
-// long bullets where the handwriting font would not.
-const typewriter = Courier_Prime({ weight: ['400', '700'], subsets: ['latin'] });
 
 // Collage placement for each experience card. On phones the cards keep a
 // small zigzag and tilt so the text stays easy to read; from `lg` up they are
@@ -16,44 +12,6 @@ const scatter = [
   'self-start -rotate-[0.5deg] lg:w-[58%] lg:ml-[15%] lg:-rotate-[1.2deg] lg:-mt-3',
   'self-end rotate-[0.6deg] lg:w-[60%] lg:mr-[9%] lg:rotate-[2.2deg] lg:-mt-3',
 ];
-
-// Tape strips, slightly different on every card.
-const tapes = [
-  'left-1/2 -translate-x-1/2 -rotate-3',
-  'left-10 rotate-6',
-  'right-12 -rotate-6',
-  'left-1/3 rotate-2',
-];
-
-const PAPER_TAPE = '#e9dcb8';
-
-function Paper({
-  children,
-  className = '',
-  tape = 0,
-  accent,
-}: {
-  children: React.ReactNode;
-  className?: string;
-  tape?: number;
-  /** Brand colour: tints the tape and draws a coloured left edge. */
-  accent?: string;
-}) {
-  return (
-    <div
-      className={`${typewriter.className} ${className} relative bg-[#f4ecdc] text-[#1f1b16] rounded-sm shadow-[0_8px_24px_rgba(0,0,0,0.4)] px-5 py-6 sm:px-8 sm:py-7 ${accent ? 'border-l-[6px]' : ''}`}
-      style={accent ? { borderLeftColor: accent } : undefined}
-    >
-      {/* Tape */}
-      <span
-        aria-hidden
-        className={`absolute -top-3 ${tapes[tape % tapes.length]} w-20 sm:w-24 h-6 shadow-sm`}
-        style={{ backgroundColor: `${accent ?? PAPER_TAPE}bb` }}
-      />
-      {children}
-    </div>
-  );
-}
 
 function Heading({
   children,
@@ -139,31 +97,6 @@ export default function Resume() {
   return (
     <section aria-label='Resume' className='relative px-4 sm:px-6 pt-8 pb-8'>
       <div className='mx-auto max-w-3xl lg:max-w-6xl flex flex-col gap-14 sm:gap-16'>
-        {/* Summary, with a chrome bow tied on two corners. Extra padding keeps
-            the bows clear of the text. */}
-        <Paper
-          className='self-center w-[86%] lg:w-[68%] -rotate-[0.6deg] lg:-rotate-[1deg] !px-9 !py-10 sm:!px-14 sm:!py-12'
-          tape={0}
-        >
-          <Image
-            src='/bow.png'
-            alt=''
-            aria-hidden
-            width={499}
-            height={499}
-            className='pointer-events-none absolute -top-7 -left-7 w-14 sm:-top-10 sm:-left-10 sm:w-24 h-auto -rotate-[18deg] drop-shadow-[0_4px_6px_rgba(0,0,0,0.35)]'
-          />
-          <p className='text-sm sm:text-[15px] leading-relaxed'>{resume.summary}</p>
-          <Image
-            src='/bow.png'
-            alt=''
-            aria-hidden
-            width={499}
-            height={499}
-            className='pointer-events-none absolute -bottom-7 -right-7 w-14 sm:-bottom-10 sm:-right-10 sm:w-24 h-auto rotate-[18deg] drop-shadow-[0_4px_6px_rgba(0,0,0,0.35)]'
-          />
-        </Paper>
-
         <div className='flex flex-col'>
           <Heading className='self-start lg:ml-[6%] -rotate-2'>experience</Heading>
           <div className='flex flex-col gap-8 lg:gap-0'>
