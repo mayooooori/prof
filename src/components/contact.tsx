@@ -19,10 +19,7 @@ export default function Contact() {
       </div>
       <div className='flex flex-col items-center mt-10 px-6'>
         <p className='font-handwritten text-white text-xl sm:text-2xl leading-relaxed text-center'>
-          I dont bite, I serve and eat <br />
-          Hit me up 💋 <br />
-          we can talk about anything, <br />
-          from work to life :) <br />
+          let&apos;s panic professionally together 💋
         </p>
         <div className='flex flex-row gap-7 mt-10'>
           <a href={linkedin} target='_blank' rel='noopener noreferrer' aria-label='LinkedIn' className='hover:opacity-70 transition-opacity'>
