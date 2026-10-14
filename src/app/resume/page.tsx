@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import LetterWord from '@/components/letter-word';
 import { BowCard, Paper } from '@/components/paper';
@@ -9,6 +10,31 @@ export const metadata: Metadata = {
   title: 'mayooooo — resume',
   description: 'Mayuri K — detailed resume',
 };
+
+// Chrome and pink stickers scattered in the gaps. Each sits before the cards
+// in its section, so cards paint over it and a sticker never covers text.
+const stickers = {
+  starRing: { src: '/stickers/chrome-star-ring.png', w: 420, h: 594 },
+  sparkles: { src: '/stickers/chrome-sparkles.png', w: 500, h: 500 },
+  stars: { src: '/stickers/chrome-stars.png', w: 375, h: 666 },
+  heart: { src: '/stickers/pink-heart.png', w: 500, h: 500 },
+  butterfly: { src: '/stickers/pink-butterfly.png', w: 500, h: 500 },
+  bow: { src: '/stickers/pink-bow.png', w: 500, h: 500 },
+};
+
+function Sticker({ name, className }: { name: keyof typeof stickers; className: string }) {
+  const st = stickers[name];
+  return (
+    <Image
+      src={st.src}
+      alt=''
+      aria-hidden
+      width={st.w}
+      height={st.h}
+      className={`pointer-events-none absolute h-auto drop-shadow-[0_6px_10px_rgba(0,0,0,0.35)] ${className}`}
+    />
+  );
+}
 
 const backLink =
   'text-white text-lg sm:text-2xl hover:opacity-70 transition-opacity';
@@ -21,17 +47,27 @@ export default function ResumePage() {
         ← back to the fun
       </Link>
 
-      <div className='flex justify-center mt-10 sm:mt-14'>
-        <LetterWord word='RESUME' size='thanks' />
+      {/* RESUME, framed by a bow and sparkles: above the word on narrow
+          screens, beside it from md up. Anchored to the word, not the page. */}
+      <div className='flex justify-center mt-20 md:mt-14'>
+        <div className='relative'>
+          <Sticker name='bow' className='w-12 -top-16 left-0 md:w-24 md:-top-6 md:-left-28 -rotate-12' />
+          <Sticker name='sparkles' className='w-11 -top-16 right-0 md:w-24 md:-top-8 md:-right-28 rotate-6' />
+          <LetterWord word='RESUME' size='thanks' />
+        </div>
       </div>
 
       <div className='mx-auto max-w-3xl lg:max-w-6xl flex flex-col gap-16 mt-16 sm:mt-20'>
         {/* Summary */}
+        <Sticker name='heart' className='hidden lg:block w-36 left-[2%] mt-6 -rotate-12' />
         <BowCard className='self-center w-[86%] lg:w-[68%] -rotate-[0.6deg] lg:-rotate-[1deg]'>
           <p className='text-sm sm:text-[15px] leading-relaxed'>{detailed.summary}</p>
         </BowCard>
 
-        <div className='flex flex-col'>
+        <div className='relative flex flex-col'>
+          <Sticker name='starRing' className='w-14 -top-2 right-[4%] sm:w-20 lg:w-40 lg:top-6 lg:right-[6%] rotate-12' />
+          <Sticker name='butterfly' className='hidden lg:block w-40 top-[38%] left-[1%] -rotate-12' />
+          <Sticker name='stars' className='hidden lg:block w-28 top-[73%] right-[4%] rotate-6' />
           <Heading className='self-start lg:ml-[6%] -rotate-2'>experience</Heading>
           <div className='flex flex-col gap-8 lg:gap-0'>
             {detailed.experience.map((e, i) => (
@@ -45,7 +81,9 @@ export default function ResumePage() {
           </div>
         </div>
 
-        <div className='flex flex-col'>
+        <div className='relative flex flex-col'>
+          <Sticker name='stars' className='w-10 -top-4 left-[6%] sm:w-14 lg:hidden rotate-6' />
+          <Sticker name='sparkles' className='hidden lg:block w-36 top-[8%] left-[6%] -rotate-6' />
           <Heading className='self-end lg:mr-[10%] rotate-2'>selected projects</Heading>
           <div className='flex flex-col gap-8 lg:gap-0'>
             {detailed.projects.map((e, i) => (
@@ -59,12 +97,16 @@ export default function ResumePage() {
           </div>
         </div>
 
-        <div className='flex flex-col'>
+        <div className='relative flex flex-col'>
+          <Sticker name='heart' className='w-12 -top-3 right-[6%] sm:w-16 lg:hidden rotate-12' />
+          <Sticker name='butterfly' className='hidden lg:block w-36 top-[18%] right-[6%] rotate-12' />
           <Heading className='self-start lg:ml-[8%] -rotate-2'>skills</Heading>
           <SkillsCard className='self-start w-[95%] lg:w-[64%] lg:ml-[4%] -rotate-[0.6deg] lg:-rotate-[1.2deg]' />
         </div>
 
-        <div className='flex flex-col'>
+        <div className='relative flex flex-col'>
+          <Sticker name='bow' className='w-14 -top-4 left-[4%] sm:w-20 lg:hidden -rotate-6' />
+          <Sticker name='starRing' className='hidden lg:block w-32 top-[10%] left-[10%] -rotate-12' />
           <Heading className='self-end lg:mr-[18%] rotate-2'>education</Heading>
           <Paper
             className='self-end w-[95%] lg:w-[58%] lg:mr-[6%] rotate-[0.6deg] lg:rotate-[1.6deg]'
