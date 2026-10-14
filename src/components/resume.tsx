@@ -139,9 +139,29 @@ export default function Resume() {
   return (
     <section aria-label='Resume' className='relative px-4 sm:px-6 pt-8 pb-8'>
       <div className='mx-auto max-w-3xl lg:max-w-6xl flex flex-col gap-14 sm:gap-16'>
-        {/* Summary */}
-        <Paper className='self-center w-full lg:w-[68%] -rotate-[0.6deg] lg:-rotate-[1deg]' tape={0}>
+        {/* Summary, with a chrome bow tied on two corners. Extra padding keeps
+            the bows clear of the text. */}
+        <Paper
+          className='self-center w-[86%] lg:w-[68%] -rotate-[0.6deg] lg:-rotate-[1deg] !px-9 !py-10 sm:!px-14 sm:!py-12'
+          tape={0}
+        >
+          <Image
+            src='/bow.png'
+            alt=''
+            aria-hidden
+            width={499}
+            height={499}
+            className='pointer-events-none absolute -top-7 -left-7 w-14 sm:-top-10 sm:-left-10 sm:w-24 h-auto -rotate-[18deg] drop-shadow-[0_4px_6px_rgba(0,0,0,0.35)]'
+          />
           <p className='text-sm sm:text-[15px] leading-relaxed'>{resume.summary}</p>
+          <Image
+            src='/bow.png'
+            alt=''
+            aria-hidden
+            width={499}
+            height={499}
+            className='pointer-events-none absolute -bottom-7 -right-7 w-14 sm:-bottom-10 sm:-right-10 sm:w-24 h-auto rotate-[18deg] drop-shadow-[0_4px_6px_rgba(0,0,0,0.35)]'
+          />
         </Paper>
 
         <div className='flex flex-col'>
