@@ -1,6 +1,8 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
+import { stories } from '@/content/work';
 import LetterWord from './letter-word';
 
 export default function Works() {
@@ -44,10 +46,13 @@ export default function Works() {
       <div className='relative z-10 flex flex-col items-center mt-16 lg:mt-24 px-4'>
         <h2 className='text-2xl sm:text-4xl text-center'>my very serious set of works here</h2>
         <ul className='mt-8 lg:mt-12 text-xl sm:text-2xl flex flex-col gap-5 text-center'>
-          <li>my link one</li>
-          <li>my link two</li>
-          <li>my link three</li>
-          <li>my link four</li>
+          {stories.map((s) => (
+            <li key={s.slug}>
+              <Link href={`/work/${s.slug}`} className='hover:opacity-70 transition-opacity'>
+                {s.name} →
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
     </div>

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Paper } from './paper';
-import { Heading, OrgBadge, ProductLogo, scatter, SkillsCard } from './resume-parts';
+import { Heading, OrgBadge, ProductLogo, scatter, SkillsCard, StoryLink } from './resume-parts';
 import { resume, type Entry } from '@/content/resume';
 
 function EntryCard({
@@ -52,6 +52,7 @@ function EntryCard({
           </li>
         ))}
       </ul>
+      {entry.story && <StoryLink slug={entry.story} accent={entry.accent} />}
     </Paper>
   );
 }

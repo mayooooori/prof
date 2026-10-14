@@ -5,7 +5,7 @@ import EvaporateImage from './evaporate';
 
 // One cut-out word. Letter boxes scale with the viewport so the whole word
 // fits a phone, and reach the original desktop sizes from `lg` upward.
-type Size = 'hero' | 'wide' | 'thanks' | 'nav';
+type Size = 'hero' | 'wide' | 'thanks' | 'long' | 'nav';
 
 const boxBySize: Record<Size, string> = {
   // 5-letter words: 128px on desktop (HELLO / ABOUT / WORKS).
@@ -14,6 +14,9 @@ const boxBySize: Record<Size, string> = {
   wide: 'w-10 h-10 mx-0.5 sm:w-16 sm:h-16 sm:mx-2 lg:w-24 lg:h-24 xl:w-32 xl:h-32 xl:mx-3',
   // THANKS: 96px on desktop.
   thanks: 'w-12 h-12 mx-1 sm:w-16 sm:h-16 sm:mx-2 lg:w-24 lg:h-24',
+  // Long words up to ~9 letters (story titles like ASTRALINK): fits a phone,
+  // 80px on desktop.
+  long: 'w-8 h-8 mx-0.5 sm:w-12 sm:h-12 sm:mx-1 lg:w-20 lg:h-20 lg:mx-2',
   // The WORKS / RESUME / CONTACT buttons in the hero: 32px on desktop,
   // 16px on phones so all three words fit on one line.
   nav: 'w-4 h-4 sm:w-6 sm:h-6 lg:w-8 lg:h-8',
@@ -23,6 +26,7 @@ const pxBySize: Record<Size, number> = {
   hero: 128,
   wide: 128,
   thanks: 96,
+  long: 80,
   nav: 32,
 };
 

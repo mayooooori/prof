@@ -31,6 +31,8 @@ export type Entry = {
   orgLogo?: Logo;
   /** Product landing page; makes the product logo a link. */
   productUrl?: string;
+  /** Slug of this product's story page (/work/<slug>). */
+  story?: string;
   /** Brand colour for the card's tape, edge, company chip and tags. */
   accent: string;
   /** One line on what the product is. */
@@ -61,6 +63,7 @@ export const resume = {
       logo: { src: '/logos/astralink.svg', alt: 'Astralink', width: 554, height: 191 },
       orgLogo: logos.nextech,
       productUrl: 'https://www.astralinkconnect.dev/products/ai-protect',
+      story: 'astralink',
       accent: '#2563eb',
       tagline: 'Stops sensitive company data from reaching ChatGPT and other AI tools.',
       role: 'Product Engineer I',
@@ -78,6 +81,7 @@ export const resume = {
       product: 'SpindL',
       logo: { src: '/logos/spindl.svg', alt: 'SpindL', width: 89, height: 32 },
       orgLogo: logos.nextech,
+      story: 'spindl',
       accent: '#8a5a14',
       tagline: 'Private-markets investment platform, taken from research to a working proof of concept.',
       role: 'Product Engineer I',
@@ -117,6 +121,8 @@ export type DetailedEntry = {
   orgLogo?: Logo;
   /** Product landing page; makes the product logo a link. */
   productUrl?: string;
+  /** Slug of this product's story page (/work/<slug>). */
+  story?: string;
   /** Card colour: tape, left edge, company chip and bullet marks. */
   accent: string;
   role: string;
@@ -138,6 +144,7 @@ export const detailed = {
       logo: { src: '/logos/astralink.svg', alt: 'Astralink', width: 554, height: 191 },
       orgLogo: logos.nextech,
       productUrl: 'https://www.astralinkconnect.dev/products/ai-protect',
+      story: 'astralink',
       accent: '#2563eb',
       role: 'Product Engineer I',
       location: 'Bangalore, India',
@@ -156,6 +163,7 @@ export const detailed = {
       product: 'SpindL, Private-Market Investment Platform',
       logo: { src: '/logos/spindl.svg', alt: 'SpindL', width: 89, height: 32 },
       orgLogo: logos.nextech,
+      story: 'spindl',
       accent: '#8a5a14',
       role: 'Product Engineer I',
       location: 'Bangalore, India',
@@ -204,6 +212,7 @@ export const detailed = {
       accent: '#c7245f',
       role: 'Co-Founder, Product & Strategy',
       url: 'https://offlyn.love',
+      story: 'offlyn',
       bullets: [
         'Co-built and launched a consumer dating product in Bengaluru as a two-person team, taking it from an initial waitlist with no backend to a public product launch.',
         'Owned product requirements, user flows, roadmap, go-to-market planning, and trust and safety considerations; defined activation, retention, and referral metrics.',
@@ -214,6 +223,7 @@ export const detailed = {
       logo: logos.wave,
       accent: '#0e7490',
       url: 'https://wave.davidsling.in',
+      story: 'wave',
       role: 'Enterprise Product Strategy & Packaging',
       bullets: [
         'Developing an enterprise offering for an open-source AI-agent collaboration product, defining organization tiers, admin roles, pricing, access controls, and audit requirements.',

@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { Paper } from './paper';
 import { resume, type DetailedEntry, type Logo } from '@/content/resume';
 
@@ -61,6 +62,20 @@ export function ProductLogo({ logo, href }: { logo: Logo; href?: string }) {
         ↗
       </span>
     </a>
+  );
+}
+
+/** "read the story →": the in-site link to a product's story page. A plain
+ *  arrow (not ↗) so it reads as staying on this site. */
+export function StoryLink({ slug, accent }: { slug: string; accent: string }) {
+  return (
+    <Link
+      href={`/work/${slug}`}
+      className='inline-block mt-5 font-bold text-sm sm:text-base underline underline-offset-4 decoration-2 hover:translate-x-1 transition'
+      style={{ textDecorationColor: accent }}
+    >
+      read the story →
+    </Link>
   );
 }
 
@@ -168,7 +183,7 @@ export function DetailedCard({
     <Paper className={`w-[95%] ${className}`} tape={tape} accent={entry.accent}>
       <div className='flex items-center justify-between gap-3 mb-4'>
         {entry.logo ? <ProductLogo logo={entry.logo} href={entry.productUrl ?? entry.url} /> : <span />}
-        <OrgBadge org={entry.org} color={entry.accent} logo={entry.orgLogo} href={entry.url} />
+        <OrgBadge org={entry.org} color={entry.accent} logo={entry.orgLogo} />
       </div>
 
       <div className='flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-x-4'>
@@ -192,6 +207,7 @@ export function DetailedCard({
           </li>
         ))}
       </ul>
+      {entry.story && <StoryLink slug={entry.story} accent={entry.accent} />}
     </Paper>
   );
 }
