@@ -68,25 +68,9 @@ export default function Resume() {
   return (
     <section aria-label='Resume' className='relative px-4 sm:px-6 pt-8 pb-24'>
       <div className='mx-auto max-w-3xl flex flex-col gap-14 sm:gap-16'>
-        {/* Name + links */}
+        {/* Summary */}
         <Paper tilt={tilt++}>
-          <h2 className='text-3xl sm:text-4xl font-bold text-center'>{resume.name}</h2>
-          <p className='mt-3 text-center text-sm sm:text-base'>
-            {resume.location}
-            <span className='px-2'>|</span>
-            <a href={`mailto:${resume.email}`} className='underline underline-offset-4'>
-              {resume.email}
-            </a>
-            {resume.links.map((l) => (
-              <span key={l.label}>
-                <span className='px-2'>|</span>
-                <a href={l.href} target='_blank' rel='noopener noreferrer' className='underline underline-offset-4'>
-                  {l.label}
-                </a>
-              </span>
-            ))}
-          </p>
-          <p className='mt-6 text-sm sm:text-[15px] leading-relaxed'>{resume.summary}</p>
+          <p className='text-sm sm:text-[15px] leading-relaxed'>{resume.summary}</p>
         </Paper>
 
         <div>

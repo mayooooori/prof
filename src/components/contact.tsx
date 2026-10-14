@@ -6,6 +6,10 @@ import {
   LinkedinLogo,
 } from '@phosphor-icons/react';
 import LetterWord from './letter-word';
+import { resume } from '@/content/resume';
+
+const linkedin = resume.links.find((l) => l.label === 'LinkedIn')!.href;
+const github = resume.links.find((l) => l.label === 'GitHub')!.href;
 
 export default function Contact() {
   return (
@@ -21,9 +25,15 @@ export default function Contact() {
           from work to life :) <br />
         </p>
         <div className='flex flex-row gap-7 mt-10'>
-          <LinkedinLogo size={32} weight='bold' />
-          <GithubLogo size={32} weight='bold' />
-          <EnvelopeSimple size={32} weight='bold' />
+          <a href={linkedin} target='_blank' rel='noopener noreferrer' aria-label='LinkedIn' className='hover:opacity-70 transition-opacity'>
+            <LinkedinLogo size={32} weight='bold' />
+          </a>
+          <a href={github} target='_blank' rel='noopener noreferrer' aria-label='GitHub' className='hover:opacity-70 transition-opacity'>
+            <GithubLogo size={32} weight='bold' />
+          </a>
+          <a href={`mailto:${resume.email}`} aria-label='Email' className='hover:opacity-70 transition-opacity'>
+            <EnvelopeSimple size={32} weight='bold' />
+          </a>
         </div>
       </div>
     </div>
