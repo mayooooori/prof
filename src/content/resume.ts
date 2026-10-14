@@ -1,4 +1,6 @@
-// Resume content, transcribed from mayuri_pm_resume_ats.pdf.
+// Resume content, transcribed from mayuri_pm_resume_ats.pdf. Product skills
+// trimmed on 2026-10-14 to the ones her work backs up (see the offlyn bullet
+// for user research).
 // IntelXLabs is now NexTech; SpindL sits under it as Product Engineer I
 // (per Mayuri, 2026-10-14).
 // The phone number is left out on purpose: this site is public.
@@ -99,7 +101,7 @@ export const resume = {
   skills: [
     {
       label: 'Product',
-      text: '0-to-1 product development, discovery and problem framing, user research, personas and JTBD, user journeys, PRDs, UX and wireframing, MVP scoping, prioritization, roadmapping, product analytics and metrics, activation and retention, product launches, adoption and rollout, competitive research, GTM, program management, stakeholder management',
+      text: '0-to-1 product development, discovery and problem framing, user research, personas, user journeys, PRDs, UX and wireframing, MVP scoping, prioritization, roadmapping, defining success metrics, product launches, adoption and rollout, competitive research, GTM, stakeholder management',
     },
     {
       label: 'Technical',
@@ -216,6 +218,7 @@ export const detailed = {
       bullets: [
         'Co-built and launched a consumer dating product in Bengaluru as a two-person team, taking it from an initial waitlist with no backend to a public product launch.',
         'Owned product requirements, user flows, roadmap, go-to-market planning, and trust and safety considerations; defined activation, retention, and referral metrics.',
+        'Talked to prospective users to understand how they would use the product; the conversations showed that some users could be problematic, which led to a dedicated use case for handling them.',
       ],
     },
     {
