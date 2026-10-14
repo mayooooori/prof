@@ -107,7 +107,7 @@ export default function Home() {
       </div>
 
       {/* Thanks Section */}
-      <div className="relative flex items-center justify-center overflow-hidden py-16 sm:py-24">
+      <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <LetterWord word="THANKS" size="thanks" delays={[1, 2, 3, 4, 1, 2]} />
       </div>
 

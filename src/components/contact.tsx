@@ -14,7 +14,7 @@ const github = resume.links.find((l) => l.label === 'GitHub')!.href;
 export default function Contact() {
   return (
     <div className='relative flex flex-col items-center min-h-screen gap-16'>
-      <div className='relative flex justify-center items-center mt-12 sm:mt-20'>
+      <div className='relative flex justify-center items-center mt-32 sm:mt-56'>
         <LetterWord word='CONTACT' size='wide' delays={[1, 2, 3, 2, 2, 1, 2]} />
       </div>
       <div className='flex flex-col items-center mt-10 px-6'>
