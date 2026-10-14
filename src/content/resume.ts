@@ -29,6 +29,8 @@ export type Entry = {
   logo: Logo;
   /** Small company mark shown beside the company chip. */
   orgLogo?: Logo;
+  /** Product landing page; makes the product logo a link. */
+  productUrl?: string;
   /** Brand colour for the card's tape, edge, company chip and tags. */
   accent: string;
   /** One line on what the product is. */
@@ -58,6 +60,7 @@ export const resume = {
       product: 'Astralink',
       logo: { src: '/logos/astralink.svg', alt: 'Astralink', width: 554, height: 191 },
       orgLogo: logos.nextech,
+      productUrl: 'https://www.astralinkconnect.dev/products/ai-protect',
       accent: '#2563eb',
       tagline: 'Stops sensitive company data from reaching ChatGPT and other AI tools.',
       role: 'Product Engineer I',
@@ -112,6 +115,8 @@ export type DetailedEntry = {
   logo?: Logo;
   /** Small company mark shown beside the company chip. */
   orgLogo?: Logo;
+  /** Product landing page; makes the product logo a link. */
+  productUrl?: string;
   /** Card colour: tape, left edge, company chip and bullet marks. */
   accent: string;
   role: string;
@@ -132,6 +137,7 @@ export const detailed = {
       product: 'Astralink, AI Data Protection for Endpoints',
       logo: { src: '/logos/astralink.svg', alt: 'Astralink', width: 554, height: 191 },
       orgLogo: logos.nextech,
+      productUrl: 'https://www.astralinkconnect.dev/products/ai-protect',
       accent: '#2563eb',
       role: 'Product Engineer I',
       location: 'Bangalore, India',

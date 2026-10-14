@@ -41,6 +41,22 @@ export function LogoImage({ logo, className = 'h-8 sm:h-10' }: { logo: Logo; cla
   );
 }
 
+/** The card's logo, linked to its landing page when known. */
+export function ProductLogo({ logo, href }: { logo: Logo; href?: string }) {
+  if (!href) return <LogoImage logo={logo} />;
+  return (
+    <a
+      href={href}
+      target='_blank'
+      rel='noopener noreferrer'
+      aria-label={`${logo.alt} website`}
+      className='inline-flex hover:opacity-80 hover:-translate-y-0.5 transition'
+    >
+      <LogoImage logo={logo} />
+    </a>
+  );
+}
+
 /** The company chip, with the company's small mark beside it when known. */
 export function OrgBadge({
   org,
@@ -144,7 +160,7 @@ export function DetailedCard({
   return (
     <Paper className={`w-[95%] ${className}`} tape={tape} accent={entry.accent}>
       <div className='flex items-center justify-between gap-3 mb-4'>
-        {entry.logo ? <LogoImage logo={entry.logo} /> : <span />}
+        {entry.logo ? <ProductLogo logo={entry.logo} href={entry.productUrl ?? entry.url} /> : <span />}
         <OrgBadge org={entry.org} color={entry.accent} logo={entry.orgLogo} href={entry.url} />
       </div>
 

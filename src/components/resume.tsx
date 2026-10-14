@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Paper } from './paper';
-import { Heading, LogoImage, OrgBadge, scatter, SkillsCard } from './resume-parts';
+import { Heading, OrgBadge, ProductLogo, scatter, SkillsCard } from './resume-parts';
 import { resume, type Entry } from '@/content/resume';
 
 function EntryCard({
@@ -16,7 +16,7 @@ function EntryCard({
     <Paper className={`w-[95%] ${className}`} tape={tape} accent={entry.accent}>
       {/* Logo + company chip */}
       <div className='flex items-center justify-between gap-3 mb-4'>
-        <LogoImage logo={entry.logo} />
+        <ProductLogo logo={entry.logo} href={entry.productUrl} />
         <OrgBadge org={entry.org} color={entry.accent} logo={entry.orgLogo} />
       </div>
 
