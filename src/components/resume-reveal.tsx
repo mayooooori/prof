@@ -81,7 +81,7 @@ export default function ResumeReveal() {
               style={{ opacity: subtitleOpacity }}
               className='mt-10 sm:mt-16 text-lg sm:text-2xl text-center max-w-[80vw] sm:max-w-md'
             >
-              the serious stuff is on its way.
+              scroll for the serious stuff ↓
             </motion.p>
           </motion.div>
         </div>

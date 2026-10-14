@@ -6,6 +6,7 @@ import Hearts from "@/components/Hearts";
 import Hello from "@/components/hello";
 import Popup from "@/components/Popup";
 import ResumeReveal from "@/components/resume-reveal";
+import Resume from "@/components/resume";
 import Works from "@/components/works";
 import ZoomFadeImage from "@/components/zoomFade";
 import Image from "next/image";
@@ -98,6 +99,9 @@ export default function Home() {
 
       {/* Resume reveal: zooms through the pearl girl into the resume (manages its own scroll height + sticky pin) */}
       <ResumeReveal />
+
+      {/* Resume content */}
+      <Resume />
 
       {/* Thanks Section */}
       <div className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
