@@ -96,7 +96,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Thankyou Section (manages its own scroll height + sticky pin) */}
+      {/* Resume reveal: zooms through the pearl girl into the resume (manages its own scroll height + sticky pin) */}
       <ThankYou />
 
       {/* Contact Section */}

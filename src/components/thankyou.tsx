@@ -5,7 +5,6 @@ import LetterWord from './letter-word';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 
-const letters = ['T', 'H', 'A', 'N', 'K', 'S'];
 
 export default function ThankYou() {
   const ref = useRef<HTMLDivElement>(null);
@@ -20,12 +19,12 @@ export default function ThankYou() {
   const pearlScale = useTransform(scrollYProgress, [0, 0.65], [1, 16]);
   const pearlOpacity = useTransform(scrollYProgress, [0, 0.4, 0.62], [1, 1, 0]);
 
-  // THANKS: hidden inside the gap, then pops out as we zoom through it.
-  const thanksScale = useTransform(scrollYProgress, [0.45, 0.85], [0.35, 1]);
-  const thanksOpacity = useTransform(scrollYProgress, [0.5, 0.68], [0, 1]);
+  // Resume: hidden inside the gap, then pops out as we zoom through it.
+  const resumeScale = useTransform(scrollYProgress, [0.45, 0.85], [0.35, 1]);
+  const resumeOpacity = useTransform(scrollYProgress, [0.5, 0.68], [0, 1]);
 
   return (
-    <section ref={ref} className='relative h-[220vh]'>
+    <section id='resume' ref={ref} className='relative h-[220vh]'>
       {/* Pinned viewport: the animation plays while this section scrolls past. */}
       <div className='sticky top-0 h-screen overflow-hidden flex items-center justify-center'>
         {/* Pearl lady — zoom origin sits on the torn white gap (~43% down). */}
@@ -51,20 +50,19 @@ export default function ThankYou() {
           </div>
         </motion.div>
 
-        {/* THANKS — emerges from the gap as the pearl lady fades. */}
+        {/* Resume — emerges from the gap as the pearl lady fades. */}
         <motion.div
           style={{
-            scale: thanksScale,
-            opacity: thanksOpacity,
+            scale: resumeScale,
+            opacity: resumeOpacity,
             willChange: 'transform, opacity',
           }}
-          className='relative flex justify-center items-center'
+          className='relative flex flex-col items-center px-6 text-white'
         >
-          <LetterWord
-            word={letters.join('')}
-            size='thanks'
-            delays={letters.map((_, i) => (i % 4) + 1)}
-          />
+          <LetterWord word='RESUME' size='thanks' />
+          <p className='mt-10 sm:mt-16 text-lg sm:text-2xl text-center max-w-md'>
+            the serious stuff is on its way.
+          </p>
         </motion.div>
       </div>
     </section>
