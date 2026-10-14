@@ -37,7 +37,7 @@ export default function About() {
             </p>
             <Link
               href='/resume'
-              className='font-handwritten text-white text-lg sm:text-2xl underline underline-offset-8 decoration-1 hover:decoration-2 w-fit'
+              className='font-handwritten text-white text-lg sm:text-2xl w-fit hover:opacity-70 transition-opacity'
             >
               let&apos;s get to serious business now →
             </Link>
