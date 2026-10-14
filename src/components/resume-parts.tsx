@@ -42,21 +42,54 @@ export function LogoImage({ logo, className = 'h-8 sm:h-10' }: { logo: Logo; cla
 }
 
 /** The company chip, with the company's small mark beside it when known. */
-export function OrgBadge({ org, color, logo }: { org: string; color: string; logo?: Logo }) {
+export function OrgBadge({
+  org,
+  color,
+  logo,
+  href,
+}: {
+  org: string;
+  color: string;
+  logo?: Logo;
+  href?: string;
+}) {
   return (
     <span className='flex items-center gap-2 shrink-0'>
       {logo && <LogoImage logo={logo} className='h-7 sm:h-8' />}
-      <Chip color={color}>{org}</Chip>
+      <Chip color={color} href={href}>
+        {org}
+      </Chip>
     </span>
   );
 }
 
-export function Chip({ children, color }: { children: React.ReactNode; color: string }) {
+export function Chip({
+  children,
+  color,
+  href,
+}: {
+  children: React.ReactNode;
+  color: string;
+  /** When set, the chip is a link to this page (opens in a new tab). */
+  href?: string;
+}) {
+  const cls =
+    'inline-block rounded-full px-3 py-1 text-xs sm:text-sm font-bold text-white tracking-wide';
+  if (href) {
+    return (
+      <a
+        href={href}
+        target='_blank'
+        rel='noopener noreferrer'
+        className={`${cls} hover:brightness-110 hover:-translate-y-0.5 transition`}
+        style={{ backgroundColor: color }}
+      >
+        {children} <span aria-hidden>↗</span>
+      </a>
+    );
+  }
   return (
-    <span
-      className='inline-block rounded-full px-3 py-1 text-xs sm:text-sm font-bold text-white tracking-wide'
-      style={{ backgroundColor: color }}
-    >
+    <span className={cls} style={{ backgroundColor: color }}>
       {children}
     </span>
   );
@@ -112,18 +145,12 @@ export function DetailedCard({
     <Paper className={`w-[95%] ${className}`} tape={tape} accent={entry.accent}>
       <div className='flex items-center justify-between gap-3 mb-4'>
         {entry.logo ? <LogoImage logo={entry.logo} /> : <span />}
-        <OrgBadge org={entry.org} color={entry.accent} logo={entry.orgLogo} />
+        <OrgBadge org={entry.org} color={entry.accent} logo={entry.orgLogo} href={entry.url} />
       </div>
 
       <div className='flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-x-4'>
         <p className='font-bold text-base sm:text-lg leading-snug'>
-          {entry.url ? (
-            <a href={entry.url} target='_blank' rel='noopener noreferrer' className='underline underline-offset-4'>
-              {title}
-            </a>
-          ) : (
-            title
-          )}
+          {title}
         </p>
         {entry.location && <p className='text-sm shrink-0'>{entry.location}</p>}
       </div>

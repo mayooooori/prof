@@ -18,7 +18,7 @@ export const logos = {
   nextech: { src: '/logos/nextech.jpg', alt: 'NexTech', width: 200, height: 200, blend: true },
   purview: { src: '/logos/purview.jpg', alt: 'Purview', width: 200, height: 200, blend: true },
   sjce: { src: '/logos/sjce.jpg', alt: "St. Joseph's College of Engineering", width: 200, height: 200, blend: true },
-  wave: { src: '/logos/wave.png', alt: 'Wave', width: 180, height: 180 },
+  wave: { src: '/logos/wave.png', alt: 'Wave', width: 180, height: 180, blend: true },
 } satisfies Record<string, Logo>;
 
 export type Entry = {
@@ -117,6 +117,7 @@ export type DetailedEntry = {
   role: string;
   location?: string;
   dates?: string;
+  /** Landing page; makes the company chip a link. */
   url?: string;
   bullets: string[];
 };
@@ -206,6 +207,7 @@ export const detailed = {
       org: 'Wave',
       logo: logos.wave,
       accent: '#0e7490',
+      url: 'https://wave.davidsling.in',
       role: 'Enterprise Product Strategy & Packaging',
       bullets: [
         'Developing an enterprise offering for an open-source AI-agent collaboration product, defining organization tiers, admin roles, pricing, access controls, and audit requirements.',
