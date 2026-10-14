@@ -6,13 +6,13 @@
 
 export const facts = [
   { label: 'Role', value: 'Co-founder · Product & Strategy' },
-  { label: 'Team', value: 'Me + one founding engineer' },
+  { label: 'Team', value: 'Two of us: product + engineering' },
   { label: 'Market', value: 'Bengaluru first' },
   { label: 'Status', value: 'Live: v1 shipped' },
 ];
 
 export const summary =
-  'A dating app where your pool is people your friends actually know: no strangers, no bots, no engagement algorithm. I owned the concept, product strategy, user flows and go-to-market, and partnered with a founding engineer to ship it.';
+  'A dating app where your pool is people your friends actually know: no strangers, no bots, no engagement algorithm. Two of us built it together: I led the concept, product strategy, user flows and go-to-market, and our founding engineer built the app.';
 
 export const problem = {
   heading: 'Dating apps want your time, not your outcome',

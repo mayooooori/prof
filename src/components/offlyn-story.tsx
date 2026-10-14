@@ -83,7 +83,7 @@ export default function OfflynStory({ nextStory }: { nextStory: { slug: string; 
           <br />
           friends of friends
         </h1>
-        <p className='relative text-[#ff6b9f] font-semibold text-center mt-3 lg:mt-5 lg:text-2xl'>how I built offlyn.love</p>
+        <p className='relative text-[#ff6b9f] font-semibold text-center mt-3 lg:mt-5 lg:text-2xl'>how we built offlyn.love</p>
         <p className='relative mt-6 max-w-2xl text-center text-sm md:text-lg text-gray-600 leading-relaxed'>{summary}</p>
 
         <dl className='relative mt-8 grid grid-cols-2 md:grid-cols-4 gap-3 w-full max-w-3xl'>
@@ -171,7 +171,7 @@ export default function OfflynStory({ nextStory }: { nextStory: { slug: string; 
       <section className='p-3.5 md:p-5 lg:p-10 bg-[#ff6b9f]'>
         <div className='p-5 md:p-10 bg-white rounded-2xl'>
           <div className='md:text-center'>
-            <h2 className='text-2xl md:text-5xl'>What I did</h2>
+            <h2 className='text-2xl md:text-5xl'>My part</h2>
             <p className='text-[#ff6b9f] font-semibold text-sm md:text-base'>co-founder, product &amp; strategy</p>
           </div>
           <ul className='mt-6 md:mt-10 flex flex-wrap md:justify-center gap-2 md:gap-3'>
