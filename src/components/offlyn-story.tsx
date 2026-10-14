@@ -283,7 +283,7 @@ export default function OfflynStory({ nextStory }: { nextStory: { slug: string; 
       {/* How it went */}
       <section className={`${gutter} py-14 lg:py-24 bg-gradient-to-br from-white to-[#ff6b9f]/5`}>
         <Kicker>How it went</Kicker>
-        <H2>From a one-line thesis to a live app</H2>
+        <H2>From a one-line thesis to the app stores</H2>
         <ol className='mt-8 relative border-l-2 border-[#ff6b9f]/30 ml-2 space-y-8 list-none p-0'>
           {timeline.map((t) => (
             <li key={t.when} className='pl-6 relative'>

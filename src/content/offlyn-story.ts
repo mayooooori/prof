@@ -8,7 +8,7 @@ export const facts = [
   { label: 'Role', value: 'Co-founder · Product & Strategy' },
   { label: 'Team', value: 'Two of us: product + engineering' },
   { label: 'Market', value: 'Bengaluru first' },
-  { label: 'Status', value: 'Live: v1 shipped' },
+  { label: 'Status', value: 'Submitted to the app stores' },
 ];
 
 export const summary =
@@ -42,7 +42,7 @@ export const myWork = [
   'Concept & product strategy',
   'Requirements (PRD) & user flows',
   'Trust & safety model',
-  'Go-to-market & launch',
+  'Go-to-market',
   'Success metrics',
   'Talking to prospective users',
 ];
@@ -82,7 +82,7 @@ export const decisions = [
   },
   {
     title: 'Block any phone number, even someone who hasn’t joined.',
-    why: 'In a friends-of-friends graph, your ex is plausibly two degrees away. Pre-emptive blocking was a launch requirement, not a fast-follow.',
+    why: 'In a friends-of-friends graph, your ex is plausibly two degrees away. Pre-emptive blocking was a requirement for release, not a fast-follow.',
     tradeoff: 'Engineering effort for a feature most people never touch. The ones who need it, need it absolutely.',
   },
   {
@@ -121,7 +121,9 @@ export const metrics = {
 export const timeline = [
   { when: 'Nov 2025', what: 'Landing page live with the thesis in its headline, and a waitlist with no backend.' },
   { when: 'Mar 2026', what: 'The trust surface: a public FAQ, privacy policy and terms, and a web portal for self-serve account deletion.' },
-  { when: 'Apr 2026', what: 'Waitlist retired. Every sign-up link now points at the live app.' },
+  { when: 'Apr 2026', what: 'Waitlist taken down; the landing page links to the app instead.' },
+  // Per Mayuri, 2026-10-14: applied to both stores, not out yet.
+  { when: 'Now', what: 'Submitted to the Google Play Store and the Apple App Store. Not out yet.' },
 ];
 
 export const research =

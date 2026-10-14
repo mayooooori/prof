@@ -65,7 +65,7 @@ export const stories: Story[] = [
     word: 'OFFLYN',
     logo: { src: '/logos/offlyn.svg', alt: 'offlyn.love', width: 55, height: 44 },
     accent: '#c7245f',
-    tagline: 'A consumer dating product in Bengaluru, built and launched by a two-person team.',
+    tagline: 'A consumer dating product in Bengaluru, built by a two-person team.',
     role: 'Co-Founder, Product & Strategy',
     landingUrl: 'https://offlyn.love',
     sections: placeholderSections(),
