@@ -70,7 +70,7 @@ export const resume = {
       tagline: 'Stops sensitive company data from reaching ChatGPT and other AI tools.',
       role: 'Product Engineer I',
       location: 'Bangalore, India',
-      dates: 'Jun 2026 – Present',
+      dates: 'May 2026 – Present',
       highlights: [
         'Led the Windows launch, from scope to install, updates and recovery',
         'Built the enterprise rollout kit for Intune, Jamf, Kandji and Hexnode',
@@ -86,7 +86,7 @@ export const resume = {
       story: 'spindl',
       accent: '#8a5a14',
       tagline: 'Private-markets investment platform, taken from research to a working proof of concept.',
-      role: 'Product Engineer I',
+      role: 'Junior Frontend Engineer, product lead for SpindL',
       location: 'Bangalore, India',
       dates: 'Mar 2026 – May 2026',
       highlights: [
@@ -137,7 +137,7 @@ export type DetailedEntry = {
 
 export const detailed = {
   summary:
-    'Product manager with a software engineering background, taking B2B security and fintech products from problem discovery to working software. Helped define and build an endpoint AI data-protection product and led its Windows launch; single-handedly took a private-markets investment platform from research to a working proof of concept. Strong on discovery, requirements, prioritization, and enterprise rollout with engineering, security, and business stakeholders.',
+    'Product engineer doing the product manager’s job: taking B2B security and fintech products from problem discovery to working software. Helped define and build an endpoint AI data-protection product and led its Windows launch; single-handedly took a private-markets investment platform from research to a working proof of concept. Strong on discovery, requirements, prioritization, and enterprise rollout with engineering, security, and business stakeholders.',
 
   experience: [
     {
@@ -150,7 +150,7 @@ export const detailed = {
       accent: '#2563eb',
       role: 'Product Engineer I',
       location: 'Bangalore, India',
-      dates: 'Jun 2026 – Present',
+      dates: 'May 2026 – Present',
       bullets: [
         'Helped define and build an endpoint security product that detects sensitive information before it is sent to AI tools such as ChatGPT, with controls across clipboard, browser, and network activity.',
         'Designed the endpoint agent flow: how the OS-level agent detects sensitive data headed to AI tools and decides whether to allow, mask or block it.',
@@ -168,7 +168,7 @@ export const detailed = {
       orgLogo: logos.nextech,
       story: 'spindl',
       accent: '#8a5a14',
-      role: 'Product Engineer I',
+      role: 'Junior Frontend Engineer, product lead for SpindL',
       location: 'Bangalore, India',
       dates: 'Mar 2026 – May 2026',
       bullets: [
