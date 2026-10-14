@@ -101,7 +101,7 @@ export const resume = {
   skills: [
     {
       label: 'Product',
-      text: '0-to-1 product development, discovery and problem framing, user research, personas, user journeys, PRDs, UX and wireframing, MVP scoping, prioritization, roadmapping, defining success metrics, product launches, adoption and rollout, competitive research, GTM, stakeholder management',
+      text: '0-to-1 product development, discovery and problem framing, user research, personas and JTBD, user journeys, PRDs, UX and wireframing, MVP scoping, prioritization, roadmapping, defining success metrics, product launches, adoption and rollout, competitive research, GTM, stakeholder management',
     },
     {
       label: 'Technical',
