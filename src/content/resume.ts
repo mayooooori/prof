@@ -153,6 +153,7 @@ export const detailed = {
       dates: 'Jun 2026 – Present',
       bullets: [
         'Helped define and build an endpoint security product that detects sensitive information before it is sent to AI tools such as ChatGPT, with controls across clipboard, browser, and network activity.',
+        'Designed the endpoint agent flow: how the OS-level agent detects sensitive data headed to AI tools and decides whether to allow, mask or block it.',
         'Shaped policy-based protection workflows: allow and monitor activity, mask sensitive information before it is sent, or block the action entirely. Focused the product on protecting company data without unnecessarily disrupting employee workflows.',
         'Led the Windows product launch from an existing macOS implementation, defining scope, sequencing technical work, and driving installation, updates, deployment, and recovery workflows.',
         'Designed enterprise rollout capabilities, including unattended device enrollment, deployment playbooks for Intune, Jamf, Kandji, and Hexnode, and reporting to help security teams understand endpoint coverage and enforcement activity.',
