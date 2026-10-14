@@ -7,16 +7,20 @@ export type Logo = { src: string; alt: string; width: number; height: number };
 
 export type Entry = {
   org: string;
+  /** Product name; the logo shows it visually. */
+  product: string;
   /** Product logo shown at the top of the card. */
-  logo?: Logo;
-  /** Brand colour for the card's tape, edge and company chip. */
+  logo: Logo;
+  /** Brand colour for the card's tape, edge, company chip and tags. */
   accent: string;
-  product?: string;
-  orgUrl?: string;
+  /** One line on what the product is. */
+  tagline: string;
   role: string;
-  location?: string;
-  dates?: string;
-  bullets: string[];
+  location: string;
+  dates: string;
+  /** Two or three scannable highlights. */
+  highlights: string[];
+  tags: string[];
 };
 
 export const resume = {
@@ -28,64 +32,40 @@ export const resume = {
     { label: 'GitHub', href: 'https://github.com/mayooooori' },
   ],
 
+  // Short, scannable cards; the full detail lives on the separate detailed
+  // resume page Mayuri is making.
   experience: [
     {
       org: 'NexTech',
-      product: 'Astralink, AI Data Protection for Endpoints',
+      product: 'Astralink',
       logo: { src: '/logos/astralink.svg', alt: 'Astralink', width: 554, height: 191 },
       accent: '#2563eb',
+      tagline: 'Stops sensitive company data from reaching ChatGPT and other AI tools.',
       role: 'Product Engineer I',
       location: 'Bangalore, India',
       dates: 'Jun 2026 – Present',
-      bullets: [
-        'Helped define and build an endpoint security product that detects sensitive information before it is sent to AI tools such as ChatGPT, with controls across clipboard, browser, and network activity.',
-        'Shaped policy-based protection workflows: allow and monitor activity, mask sensitive information before it is sent, or block the action entirely. Focused the product on protecting company data without unnecessarily disrupting employee workflows.',
-        'Led the Windows product launch from an existing macOS implementation, defining scope, sequencing technical work, and driving installation, updates, deployment, and recovery workflows.',
-        'Designed enterprise rollout capabilities, including unattended device enrollment, deployment playbooks for Intune, Jamf, Kandji, and Hexnode, and reporting to help security teams understand endpoint coverage and enforcement activity.',
-        'Evaluated two detection engines against real product requirements, comparing precision, recall, latency, and regional coverage. Identified gaps in the alternative engine and recommended against shipping it.',
-        'Delivered product capabilities including masked-content previews, custom data-classification lists, proxy-based enforcement, event workflows, and endpoint coverage visibility.',
+      highlights: [
+        'Led the Windows launch, from scope to install, updates and recovery',
+        'Built the enterprise rollout kit for Intune, Jamf, Kandji and Hexnode',
+        'Tested two detection engines and recommended against shipping one',
       ],
+      tags: ['AI security', 'endpoint', 'enterprise rollout'],
     },
     {
       org: 'NexTech',
-      product: 'SpindL, Private-Market Investment Platform',
+      product: 'SpindL',
       logo: { src: '/logos/spindl.svg', alt: 'SpindL', width: 89, height: 32 },
       accent: '#8a5a14',
+      tagline: 'Private-markets investment platform, taken from research to a working proof of concept.',
       role: 'Product Engineer I',
       location: 'Bangalore, India',
       dates: 'Mar 2026 – May 2026',
-      bullets: [
-        'Independently drove the product from initial problem discovery to a working proof of concept, working directly with the product stakeholder. Defined the product direction, user journeys, MVP scope, data model, and delivery roadmap.',
-        'Researched cap-table, fundraising, financial-planning, and private-investment platforms to identify gaps and define a product opportunity around helping family offices discover and evaluate investment opportunities that match their investment criteria.',
-        'Mapped 14 user personas across founders, sponsors, investors, family offices, and administrators. Translated their needs into end-to-end journeys, wireframes, product requirements, and a prioritized development backlog.',
-        'Designed the core founder and investor workflows, including cap-table management, ownership and funding scenario modeling, financial information, investor profiles, deal discovery, NDA workflows, and data rooms.',
-        'Designed an explainable investment-thesis matching system using hard filters and weighted criteria. Chose a deterministic scoring approach over an LLM-based approach to make matching faster, more transparent, and easier to understand.',
-        'Prioritized delivery across three major milestones, making explicit scope trade-offs and deferring features such as billing, e-signatures, and third-party identity verification to keep the initial product focused.',
-        'Built the working proof of concept across authentication, cap tables, pro forma modeling, financials, investor profiles, deal discovery, NDA workflows, data rooms, demo data, and investor-facing materials.',
+      highlights: [
+        'Turned 14 personas into journeys, wireframes and a prioritised backlog',
+        'Designed explainable deal matching instead of a black-box LLM',
+        'Planned three milestones and cut billing and e-signatures to stay focused',
       ],
-    },
-    {
-      org: 'NexTech',
-      accent: '#c2335f',
-      role: 'Junior Frontend Engineer',
-      location: 'Bangalore, India',
-      dates: 'May 2025 – May 2026',
-      bullets: [
-        'Delivered the finance module for HoaShare, covering invoices, bills, budgets, payments, reconciliations, and reporting; also shipped the Leads and Requests modules.',
-        'Investigated and prioritized customer-reported production bugs across three applications, balancing urgent fixes with ongoing feature delivery for an eight-engineer team.',
-        'Rebuilt Astralink Superadmin using reusable components and v2 APIs, contributing to product and engineering decisions as the platform evolved.',
-      ],
-    },
-    {
-      org: 'Purview Services',
-      accent: '#1f7a6e',
-      role: 'Software Engineer Intern',
-      location: 'Hyderabad, India',
-      dates: 'Jul 2024 – Dec 2024',
-      bullets: [
-        'Identified an onboarding barrier in Seva Vision, a smart-glasses product: users needed sighted assistance to complete setup. Designed a revised setup flow that removed this dependency without changing the hardware packaging; the team adopted the approach.',
-        'Led iOS development, built two responsive websites, and supported stakeholder discussions and client demonstrations.',
-      ],
+      tags: ['fintech', '0-to-1', 'discovery'],
     },
   ] satisfies Entry[],
 

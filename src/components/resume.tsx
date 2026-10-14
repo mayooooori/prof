@@ -51,35 +51,45 @@ function EntryCard({
     <Paper className={`w-[95%] ${className}`} tape={tape} accent={entry.accent}>
       {/* Logo + company chip */}
       <div className='flex items-center justify-between gap-3 mb-4'>
-        {entry.logo ? (
-          <Image
-            src={entry.logo.src}
-            alt={entry.logo.alt}
-            width={entry.logo.width}
-            height={entry.logo.height}
-            className='h-8 sm:h-10 w-auto'
-          />
-        ) : (
-          <span />
-        )}
+        <Image
+          src={entry.logo.src}
+          alt={entry.logo.alt}
+          width={entry.logo.width}
+          height={entry.logo.height}
+          className='h-8 sm:h-10 w-auto'
+        />
         <Chip color={entry.accent}>{entry.org}</Chip>
       </div>
 
-      <div className='flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-x-4'>
-        <p className='font-bold text-base sm:text-lg'>{entry.product ?? entry.org}</p>
-        {entry.location && <p className='text-sm shrink-0'>{entry.location}</p>}
+      {/* What it is */}
+      <p className='font-bold text-base sm:text-lg leading-snug'>{entry.tagline}</p>
+
+      <div className='flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-x-4 mt-2 text-sm'>
+        <p className='italic'>
+          {entry.role} · {entry.location}
+        </p>
+        <p className='italic shrink-0'>{entry.dates}</p>
       </div>
-      <div className='flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-x-4 mt-1'>
-        <p className='italic text-sm sm:text-base'>{entry.role}</p>
-        {entry.dates && <p className='italic text-sm shrink-0'>{entry.dates}</p>}
-      </div>
-      <ul className='mt-4 flex flex-col gap-2.5 text-sm sm:text-[15px] leading-relaxed'>
-        {entry.bullets.map((b) => (
-          <li key={b} className='flex gap-2.5'>
+
+      <ul className='mt-4 flex flex-col gap-2 text-sm sm:text-[15px] leading-relaxed'>
+        {entry.highlights.map((h) => (
+          <li key={h} className='flex gap-2.5'>
             <span aria-hidden className='shrink-0' style={{ color: entry.accent }}>
               ✦
             </span>
-            <span>{b}</span>
+            <span>{h}</span>
+          </li>
+        ))}
+      </ul>
+
+      <ul className='mt-5 flex flex-wrap gap-2' aria-label='Areas'>
+        {entry.tags.map((t) => (
+          <li
+            key={t}
+            className='rounded-full px-3 py-0.5 text-xs sm:text-sm border-[1.5px]'
+            style={{ borderColor: entry.accent }}
+          >
+            {t}
           </li>
         ))}
       </ul>
@@ -102,7 +112,7 @@ export default function Resume() {
           <div className='flex flex-col gap-8 lg:gap-0'>
             {resume.experience.map((e, i) => (
               <EntryCard
-                key={`${e.org}-${e.product ?? ''}-${e.role}`}
+                key={`${e.org}-${e.product}`}
                 entry={e}
                 className={scatter[i % scatter.length]}
                 tape={i + 1}
